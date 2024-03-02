@@ -1,0 +1,520 @@
+ /* General Website Style rules */
+
+ @import url("https://fonts.cdnfonts.com/css/7-led");
+
+ @import url("https://fonts.cdnfonts.com/css/led-digital-7");
+ body {
+ 
+  font-family: "Helvetica", Sans-Serif;
+
+  background-color: #121212;
+
+  }
+ .hold {
+   color: #3b3b3b;
+ }
+
+ .screenboard {
+   background-color: #1f1f1f;
+
+   width: 100%;
+
+   height: 300px;
+ }
+
+
+
+
+
+ .topnav {
+   width: 100%;
+   background-color: #121212;
+ }
+
+ .toplogo {
+   margin-left: 100px;
+ }
+
+ .cage {
+   align-content: center;
+   display: inline-block;
+   width: 100%;
+ }
+
+ .incage {
+   margin: auto;
+
+   width: fit-content;
+ }
+
+ .box {
+   margin-top: 10px;
+   margin-left: 50px;
+   padding: 30px, 30px;
+   margin: 30px, 30px;
+ }
+
+ .playscreen {
+   float: left;
+   width: 360px;
+   height: 200px;
+ }
+
+ .left {
+   margin-left: 0px;
+   float: center;
+ }
+
+ .middle {
+   float: center;
+ }
+
+ .right {
+   float: center;
+ }
+
+ .live {
+   color: rgb(245, 37, 48);
+ }
+
+ .cue {
+   color: rgb(69, 228, 69);
+ }
+ .prev {
+   margin-left: 200px;
+   color: rgb(87, 36, 227);
+ }
+
+ .pclock {
+   font-family: "7LED italic", sans-serif;
+   font-family: "7LED", sans-serif;
+   font-family: "LED Digital 7", sans-serif;
+
+   color: rgb(245, 37, 48);
+   margin-left: 100px;
+ }
+
+ .caption {
+   margin-top: -60px;
+   position: absolute;
+   font-size: 20px;
+   font-weight: bold;
+   padding: 10px;
+   text-align: left;
+   z-index: 10;
+ }
+
+ .cpanels {
+   float: left;
+   margin-top: -8px;
+   position: absolute;
+   color: aliceblue;
+   font-size: 15px;
+   font-weight: normal;
+   padding: 10px;
+   text-align: left;
+   z-index: 10;
+ }
+
+ .clock {
+   font-family: "7LED italic", sans-serif;
+   font-family: "LED Digital 7", sans-serif;
+   font-weight: bold;
+   margin-left: 280px;
+   color: rgb(69, 228, 69);
+   font-weight: lighter;
+ }
+
+ .screenxboard {
+   width: 100%;
+   height: 100%;
+   margin-left: 50px;
+   background-color: aqua;
+   align-content: center;
+ }
+
+ .block{
+  margin-top :400px;
+ margin-left: 300px;
+ width: 100%;
+ height: 300px;
+
+ }
+ .mainbody {
+   position: absolute;
+   display: inline-block;
+ margin-left: 300px;
+   padding: 20px;
+   margin-left: 30px;
+   width: 100%;
+   margin:0px;
+   padding: 0px;
+   height: 600px;
+   background-color: 121212;
+ }
+
+ .cctext {
+   float: left;
+   color: aquamarine;
+ }
+
+ .panel {
+   float: left;
+   padding: 20px;
+   margin-left: 30px;
+   float: left;
+   height: 600px;
+   background-color: rgb(46, 45, 45);
+ }
+
+ .side {
+  position: absolute;
+  float: left;
+   height: 90%;
+   width: 30%;
+   background-color: rgb(39, 38, 38);
+
+ }
+ .main {
+   height: 90%;
+   width: 60%;
+   background-color:#121212;
+
+   overflow: auto;
+   display: inline-block;
+ }
+
+ .timeline {
+   height: 1600px;
+   overflow-x: scroll;
+
+   display: inline;
+ }
+
+
+
+
+ .cards {
+   margin: 0 auto;
+   text-align: center;
+     display: -webkit-flex;
+     display: flex;
+   border-radius: 10px;
+     -webkit-justify-content: center;
+   justify-content: center;
+   -webkit-flex-wrap: wrap;
+     flex-wrap: wrap;
+     margin-top: 5px;
+     padding: 1.5%;
+     -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box; 
+   box-sizing: border-box; 
+   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+ }
+
+ .cards:hover {
+   box-shadow: 0 4px 10px rgba(0,0,0,0.16), 0 4px 10px rgba(0,0,0,0.23);
+ }
+
+ .container {
+
+   display: grid;
+   grid-template-columns: repeat(1, 10fr);
+   gap: 10px;
+   overflow: hidden;
+   height:fit-content;
+   width: fit-content;
+ }
+
+ .boxx {
+   width: 100%;
+   border: 2px solid #666;
+   background-color: #454444;
+   border-radius: 0.5em;
+   padding: 1px ,1px;
+   gap :1px;
+   cursor: move;
+   height: 55px;
+ }
+
+
+
+
+ .boxxon {
+  width: 100%;
+  border: 2px solid #e00a0a;
+  background-color: #372828;
+  border-radius: 0.5em;
+  padding: 1px ,1px;
+  gap :1px;
+
+  height: 55px;
+}
+
+.progximg {
+  overflow: hidden;
+  display: inline-block;
+  padding: 1px ,1px;
+
+
+     }
+     .proglist{
+color: aliceblue;
+       display: inline-block;
+       padding: 2px ,2px;
+       margin-left: auto;
+       height: 100%;
+  gap :2px;
+     }
+
+     .proglist{
+       margin-top: 2px;
+       margin-left: 2px;
+color: aliceblue;
+      float: left;
+   
+     
+  gap :0px;
+     }
+
+      .ptitle{
+       margin-top: 3px;
+color: aliceblue;
+white-space: nowrap; 
+       display: inline-block;
+   width:60% ;
+   height: 40px;
+       overflow: hidden;
+     
+       font-size: 20px;
+       font-family: Verdana, Geneva, Tahoma, sans-serif;
+      
+  gap :0px;
+     }
+
+
+  .morelive {
+margin-top: 170px;
+margin-left: 0px;
+background-image:url(/img/backpng4png) ;
+vertical-align:top;
+height: 50px;
+width: 360px;
+
+     }
+
+     .rtclock{
+      margin-top: -20px;
+      margin-left: 250px;
+      
+     }
+
+     .clabel{
+    
+      margin-top: -20px;
+      margin-left: 200px;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color:white;
+     }
+     
+     .labeltext{
+    
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color:white;
+     }
+     .ptbtm{
+
+      margin-top: 0px;
+
+
+     }
+
+
+
+
+
+
+     .plive {
+      margin-top: 0px;
+      z-index: -10;
+      width: 99%;
+      height: 99%;
+    }
+
+    .rtcblack{
+      position: absolute;
+     
+      width: 360px;
+      margin-top: -1px;
+      z-index: 15;
+      
+      height: 30px;
+      
+           }
+
+/*           from here now               */
+.livelogo{
+position: absolute;
+z-index: 12;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(221, 19, 19);
+  margin-top: -300px;
+  margin-left: 25;
+width: 352px;
+height: 30px;
+}
+
+.redbase{
+  float: left;
+  display: inline-block;
+position: absolute;
+z-index: 0;
+background-image: url(img/backpng4.png);
+width: 352px;
+height: 30px;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color:white;
+margin-top: -203px;
+
+           }
+
+
+.prevlogo{
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:white;
+
+
+}
+
+
+.greenclock{
+ position: absolute;
+ float: left;
+font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(22, 195, 42);
+  margin-top: 0x;
+  margin-left: 125;
+  font-size: larger;
+width: 352px;
+height: 30px;
+
+
+}
+.greenclockhead{
+  position: absolute;
+  float: left;
+ font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+   color:rgb(22, 195, 42);
+   margin-top: -295px;
+   margin-left: 220px;
+   font-size: larger;
+ width: 352px;
+ height: 30px;
+ 
+ 
+ }
+
+ .ptcaptiondown{
+  position: absolute;
+  float: left;
+margin-left: -100px;
+margin-top: 0px;
+
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(246, 251, 246);
+
+ }
+
+ .ptclockdown{
+  position: absolute;
+  float: left;
+  margin-left:-60px;
+  margin-top: 0px;
+  font-family: "LED Digital 7", sans-serif;
+
+   color: rgb(245, 37, 48);
+  
+
+ }
+
+ .rtclockdown{
+  position: absolute;
+  float: left;
+  margin-left: 100px;
+  margin-top: 0px;
+  font-family: "LED Digital 7", sans-serif;
+
+   color: rgb(245, 37, 48);
+ }
+ 
+ .rtcaptiondown{
+  position: absolute;
+  float: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(246, 251, 246);
+  margin-left:70px;
+  margin-top: 0px;
+ }
+
+ .muteicon{
+
+ position: absolute;
+ float: left;
+
+ color:rgb(246, 251, 246);
+ margin-left:100px;
+ margin-top: -45px;
+}
+
+
+.systemclocker{
+
+  position: absolute;
+  float: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+  color:rgb(193, 162, 243);
+  margin-left: 10px;
+  margin-top: -200px;
+ }
+
+ .rtcountdown{
+
+  position: absolute;
+  float: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+  color:rgb(193, 162, 243);
+  margin-left: 250px;
+  margin-top: 0px;
+ }
+
+ .liveclock{
+
+  position: absolute;
+  float: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-size: larger;
+  color:rgb(246, 251, 246);
+  margin-left:250px;
+  margin-top: -50px;
+ }
+
+ .livelogo{
+
+  position: absolute;
+  float: left;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  color:rgb(232, 7, 7);
+  margin-left:0px;
+  margin-top: -260px;
+ }
+
+ .mainpanel  {
+  position: absolute;
+ display: inline-block;
+
+ 
+
+}
+

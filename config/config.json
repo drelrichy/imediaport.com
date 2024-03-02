@@ -1,0 +1,14 @@
+{
+	"log": true,
+	"port": 8040,
+	"url": "/chat-bot",
+	"ssl": {
+		"use": false,
+		"key": "/etc/ssl/localhost/localhost.key",
+		"cert": "/etc/ssl/localhost/localhost.crt"	
+	},
+        "readline": {
+        	"use": true,
+		"prompt": "[--:--:--][CONSOLE] "
+        }
+}

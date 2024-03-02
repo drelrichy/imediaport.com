@@ -1,0 +1,176 @@
+<style>
+                      
+    .demoHeaders {
+        margin-top: 2em;
+    }
+    
+    #dialog-link {
+        padding: .4em 1em .4em 20px;
+        text-decoration: none;
+        position: relative;
+    }
+    #dialog-link span.ui-icon {
+        margin: 0 5px 0 0;
+        position: absolute;
+        left: .2em;
+        top: 50%;
+        margin-top: -8px;
+    }
+    #icons {
+        margin: 0;
+        padding: 0;
+    }
+    #icons li {
+        margin: 2px;
+        position: relative;
+        padding: 4px 0;
+        cursor: pointer;
+        float: left;
+        list-style: none;
+    }
+    #icons span.ui-icon {
+        float: left;
+        margin: 0 4px;
+    }
+    .fakewindowcontain .ui-widget-overlay {
+        position: absolute;
+    }
+    select {
+        width: 200px;
+    }
+  
+ .uui-datepicker {
+     background: #333;
+     border: 1px solid #555;
+     color: #EEE;
+ }
+ </style>
+ <div id="view_library" class="libry_view murdered-out-black-gradient" >
+       <div id="libryplayer" class="libry_view_screen">
+    <div class="input-group input-group-sm mb-3 libry_view_screen_title">
+   
+     <h4> <%=user.username%> <%=channel.channel_id%>|<span id="dateofdays"></span></h4>
+     <hr /></div>
+ 
+     <div class="input-group input-group-sm mb-3 libry_view_screen_trimmer">
+   
+     </div>
+     
+     <div class= "progress progresstext libry_view_screen_footer" >
+       
+         <div class="progress-bar progresstext" role="progressbar" aria-label="Segment one" style="width: 6%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100">Trim</div>
+         <div class="progress-bar bg-dark progresstext" role="progressbar" aria-label="Segment two" style="width: 90%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100">35:48 | Program Name</div>
+         <div class="progress-bar bg-danger progresstext" role="progressbar" aria-label="Segment three" style="width: 4%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"> cut</div>
+       </div>
+ 
+       </div>
+ 
+    <div id="libryplayer" class="libry_view_info">
+ 
+       <div class="input-group btn btn-group mb-4">
+     
+          
+            
+                     <button class="btn btn btn-success infox" onclick="imedia.callFunction('welcome')" type="button"><i id="xicone_grande" class="fas fa-house-chimney-user"></i>!Home</button>                  
+                      <button class="btn btn btn-info infox iconBut " onclick="imedia.savePlaylist()" type="button"><i class="fa-solid fa-layer-group "></i>Playlist</button>
+                      <button class="btn btn btn-primary infox iconBut" onclick="imedia.makeLibry(this,event)" type="button"><i class="fa-solid fa-truck-fast" ></i>Libry</button>
+                      <button class="btn btn btn-danger infox iconBut" onclick="imedia.makeSchedule(this,event)" type="button"><i class="fa-solid fa-truck-fast"></i>Schedule</button>
+       
+                     </div>
+         
+       <fieldset>
+        
+       <div class="input-group  mb-3"> 
+        <button class="btn btn btn-dark .infox" type="button">Start</button>
+        <input type="text" class="form-control .infox" placeholder="start trim" aria-label="Username"/>
+                <button class="btn btn btn-dark .infox" type="button">End</button>
+    </div></fieldset><fieldset>
+        
+    <div class="input-group btn btn-group mb-3">
+        <select id="sheduleType"  name="function" class="form-select"  onchange='imedia.ScheduleType(this,event)'>
+         <option selected>Schedule by..</option>
+         <option value="loop">Loop</option>
+         <option value="Weekday">Weekly</option>
+         <option value="Weekday">Day</option>
+         <option value="date">Date</option>
+         <option value="loopodd">Odd</option>
+         <option value="loopeven">Even</option>
+         <option value="ai">AI Automation</option>
+       
+     </select>
+       <input value=""   id="dateinput"   type="input" name="dateinput" class="form-control datepicker" aria-label="Sizing example input" aria-describedby="inputGroup"/>
+     
+       <input value=""  data-value=""  id="weekly"  type="week" name="date" class="form-control datepicker" aria-label="Sizing example input" aria-describedby="inputGroup" />
+              <select id="weekday" name="Todays_Day" class="form-select">
+                 <option value="Monday">Mon  </option>
+                 <option value="Tuesday">Tue </option>
+                 <option value="Wednesday">Wed  </option>
+                 <option value="Thursday">Thur   </option>
+                 <option value="Friday">Fri </option>
+                 <option value="Saturday">Sat</option>
+                 <option value="Sunday">Sun </option>
+             </select>   <div class="form-group" id="box1">
+          </div></fieldset>
+ 
+    </div>
+ </div>
+  <script>
+ var d =["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][(new Date()).getDay()]
+ $("#weekday").val(d);
+  Date.prototype.getWeek = function() {
+       var onejan = new Date(this.getFullYear(), 0, 1);
+       return Math.ceil((((this - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+   }
+ 
+   var weekNumber = (new Date()).getWeek();
+ 
+   var dayNames = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+   var now = new Date();
+   
+ GLOBAL.day = dayNames[now.getDay()];
+ GLOBAL.week= weekNumber;
+ 
+ 
+ 
+ 
+  $("#dateofdays").html(`${GLOBAL.day}, Week ${GLOBAL.week}`);
+ 
+  
+ 
+ 
+ 
+  //var idate = new Date();
+ var today = new Date(now.getFullYear(),now.getMonth(), now.getDate());
+ 
+ 
+ 
+ // COMPONENT
+ 
+ 
+ 
+  $('#dateinput').datepicker({
+   format: "dd-mm-yy",
+ nextText: '&rarr;',		
+ prevText: '&larr;',
+ showOtherMonths: true,
+   todayHighlight: true,
+   autoclose: true,
+     immediateUpdates: true,
+     todayBtn: true,
+   container: '#box1',
+   orientation: 'top right'
+ });
+ //.datepicker( 'setDate', Today);;
+ 
+ //.datepicker("setDate",'now');;
+ 
+ //$('#dateinput' ).datepicker( optComponent );
+ 
+ $('#dateinput' ).datepicker( 'setDate', now);
+ 
+ 
+ 
+ 
+  </script> 
+ 
+ 

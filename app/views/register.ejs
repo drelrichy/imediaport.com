@@ -1,0 +1,100 @@
+
+<% include ./partials/head %>
+<% include ./partials/top-header %>
+<style>
+.form-container{
+width: 100vw;
+height: 90vh;
+margin: 0px,0px;
+padding: 0px,0px;
+overflow: hidden;
+align-items: center;
+overflow-y: auto;
+
+}
+
+
+.form-box{
+
+	width: 600px;
+	max-width:800px ;
+	min-width:400px ;
+}
+
+</style>
+<div class="top-gap"></div>
+<div id="" class=" col-md-12 align-items-center form-container formhouse" >
+<div class=" form-box shadow login-form">
+	<h2 class="text-center  text-light">Registration Form</h2>
+<% if(typeof err != 'undefined' ){%>
+				<div class="alert alert-dismissible alert-danger">
+  				<button class="close" type="button" data-dismiss="alert">&times;</button>
+  				<strong><%= err %></strong> 
+				</div>	
+<% } %>
+<% if(success_msg != '' ){ %>
+                <div class="alert alert-dismissible alert-success">
+                <button class="close" type="button" data-dismiss="alert">&times;</button>
+                <strong><%= success_msg %></strong> 
+                </div>  
+<% } %>
+
+<% if( error != '' ){%>
+        <div class="alert alert-dismissible alert-danger">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        <strong><%= error %></strong>
+        </div>
+<% } %>
+
+<div class="avatar ">
+			<img  src="/images/avatar3.png" alt="Avatar">
+		</div> 
+    <form action="/register"  class=" row  shadow" method="POST">
+		          
+        <div class="col-md-6 form-group">
+        	<label class="col-form-label">Username</label>
+							<input type="text" class="form-control" placeholder=" " name="username" id="username" required=""
+							value="<%= typeof username != 'undefined' ? username : '' %>" />
+        </div>
+
+		<div class="col-md-6 form-group">
+        	<label class="col-form-label">Channel ID</label>
+							<input type="text" class="form-control" placeholder=" " name="adminchannel" id="adminchannel" 
+							value="<%= typeof adminchannel != 'undefined' ?adminchannel : '' %>" />
+        </div>
+
+
+		<div class="col-md-6  form-group">
+        	<label class="col-form-label">First Name</label>
+							<input type="text" class="form-control" placeholder=" " name="name" id="name" required=""
+							value="<%= typeof name != 'undefined' ? name : '' %>" />
+        </div>
+		<div class="col-md-6  form-group">
+        	<label class="col-form-label">Last Name</label>
+							<input type="text" class="form-control" placeholder=" " name="surname" id="surname" required=""
+							value="<%= typeof surname != 'undefined' ? surname : '' %>" />
+        </div>
+		
+		
+		
+		
+        <div class="col-md-6 form-group">
+        <label class="col-form-label">Password</label>
+							<input type="password" class="form-control" placeholder=" " name="password" id="password" required=""
+							value="<%= typeof password != 'undefined' ? password : '' %>" />
+		</div> 
+		<div class="col-md-6 form-group">
+			<label class="col-form-label">Password2</label>
+								<input type="password" class="form-control" placeholder=" " name="password2" id="password2" required=""
+								value="<%= typeof password2 != 'undefined' ? password2 : '' %>" />
+			</div> 
+
+        <div class="col-md-12 form-group clearfix">
+            <button type="submit" class="btn btn-primary btn-lg pull-right">Register</button>
+        </div>		
+    </form>
+	<div class="hint-text">Already have an account? <a href="/login">Login</a></div>
+</div>
+</div>
+</body>
+</html>                            

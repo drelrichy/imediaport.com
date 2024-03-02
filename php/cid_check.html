@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+<head>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>How to check username availability using JavaScript and PHP</title>
+
+   <script>
+    function checkCID(cidobj){
+    let cid = cidobj.value;
+
+    info = document.getElementById('for'+cidobj.id);
+       var usernameRegex = /^[a-zA-Z0-9]+$/;
+    
+       if(usernameRegex.test(cid)){
+        info.innerHTML ="";
+    
+          if(cid.length > 3){
+    
+             // AJAX request
+             var xhttp = new XMLHttpRequest();
+             xhttp.open("GET", "ajaxfile.php?cid="+cid, true); 
+             xhttp.setRequestHeader("Content-Type", "application/json");
+             xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+    
+                   // Response
+                   var response = JSON.parse(this.responseText); 
+                   info.innerHTML = response.feedback;
+                }
+             };
+
+            
+             var data = {cid: cid};
+             xhttp.send(JSON.stringify(data));
+             xhttp.send(data);
+          }
+       }else{
+        info.innerHTML = "<span style='color: red;'>Please enter valid value no specail character or space </span>";
+       }
+    
+    }
+    
+    </script>
+</head>
+<body>
+
+   <div> 
+       <input type="text" id="txt_username" name="txt_username" placeholder="Enter Username" maxlength='60' onchange="checkCID(this)"  onkeyup="checkCID(this)" />
+       <!-- Response --> 
+       <div id="fortxt_username"  name="">Please enter a valide channel ID</div> 
+   </div>
+
+</body>
+</html>

@@ -1,0 +1,684 @@
+
+<!DOCTYPE html>
+<head>
+
+
+		<title>iMedia PORT CLOUD SERVICE </title>
+
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>OneTV-Play</title>
+        <link href="https://fonts.cdnfonts.com/css/new-x-digital-tfb" rel="stylesheet">
+
+
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
+     
+
+       
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js" integrity="sha512-3gJwYpMe3QewGELv8k/BX9vcqhryRdzRMxVfq6ngyWXwo03GFEzjsUm8Q7RZcHPHksttq7/GFoxjCVUjkjvPdw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+       <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script  src="https://imediaport.com:4646/lib/imedia/imediaport.engine.js"> </script>
+        <script  src="https://imediaport.com:4646/lib/imedia/play.engine.js"> </script>
+        <script>
+
+
+          var ism3u8  = false;
+          var isYt    = false;
+          var isYid   = false;
+          var isMp4   = false;
+          var isCH    = false;
+          var isYplay = false;
+          var muter;
+          var index;
+          var videosrc;
+          var channel_id;
+          var Nvideo  = null;
+          var channel;
+          var isMobile=false;
+          var programs;
+          var redirect = false;
+          var trace = true;
+          var debug = true;
+          var trace0 = true;
+          var trace1 = true;
+          var trace2 = true;
+          var trace6 = true;
+          var trace4 = true;
+          var done;
+          var  videocode;
+          var  tickclock =0;
+          const SBASESERVER  ="https://serv.onetv.ng";
+          var isPlayer = false;
+          
+          var ch_id;
+          
+          var playReady = false;
+          var player;
+          var ch_i;
+          var isYt= false;
+          var ism3u8 =false;
+          var isCH= false;
+          var isMobile;
+          var isMute;
+          
+          //const VBASESERVER  = window.location.origin;
+          VBASESERVER  = 'https://imediaport.com:4646';
+          
+      var urlParams = new URLSearchParams(window.location.search);
+          
+          
+          // ch_i= urlParams.get('ch');
+          ch_i = urlParams.get('ch');
+          isMobile = urlParams.get('mobile');
+          isMute  = urlParams.get('mute');
+          if(ch_i)ch_id= ch_i.trim();
+          
+          console.log("-------------A-------->>>>> load ","|"+ch_id+"|");
+          console.log("-------------B-------->>>>> load ","|"+ch_i+"|");
+          
+          
+          
+          videosrc= urlParams.get('v');
+          
+          if(videosrc){
+          
+          if(videosrc.includes("youtube")){
+           // videosr
+           isYt    = true;
+          
+           videocode = (videosrc.includes('?'))? "&autoplay=1&volume=1&mute=0&controls=0&disablekb=1&title=0&share=0&open_playlist=0&random=0&autohide=1&enablejsapi=1" : "?autoplay=1&volume=1&mute=0&controls=0&disablekb=1&title=0&share=0&open_playlist=0&random=0&autohide=1&enablejsapi=1";
+            
+           videosrc =   videosrc + videocode;
+          
+           if(isMobile) videosrc.replace("mute=0","mute=1");
+          
+          }
+          
+          if(videosrc.includes(".m3u8")){
+            ism3u8  = true;
+          
+           //let videocode = (videosrc.includes('?'))? "&autoplay=1&mute=0" : "?autoplay=1&mute=0";
+            
+           //videosrc =   videosrc + videocode;
+          
+           if(thisApp.system.isMobile) videosrc.replace("mute=0","mute=1");
+          
+          
+          }
+          
+          
+          } else{
+          
+            channel_id =  videosrc = urlParams.get('ch');
+          
+           
+          //videosrc= get_request('ch');
+          //channel_id= get_request('ch');
+          
+          
+          if (channel_id!="" && channel_id!= null){
+          
+           isCH = true;
+           isYt = true;
+           YplayGo = true;
+           // engine(channel_id);
+            //play.clock();=================================s
+          
+          }
+          
+          
+          }
+          
+          const engx = false;
+          
+              </script>
+        <script>
+        
+        document.cookie = "my_cookie_name=imediaport; expires=Thu, 11 Jun 2070 11:11:11 UTC; path=/; SameSite=None; Secure";
+        
+        var  playReady = false;
+        var player;
+        var ch_id='1word';
+        const VBASESERVER  = window.location.origin;
+    // urlParams = new URLSearchParams(window.location.search);
+        ch_i = urlParams.get('ch');
+        
+        console.log("|"+ch_i+"|");
+        
+        ch_id =(ch_i!=null) ?ch_i:ch_id;
+        
+        const TV_URL = VBASESERVER + "/api/play/" +ch_id;
+        var padClock=0;
+        var Video_ID ='M7lc1UVf-VE';
+        
+        
+        
+         const mxu =axios(TV_URL).then((ldata) => {
+        const {status, message , channel , schedule, data } = ldata.data;
+        if(status){
+        play.engine(ldata.data);
+        
+        };
+        
+          });
+        
+        </script>
+
+       
+ 
+
+  
+    <script src="
+https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.js
+"></script>
+<link href="
+https://cdn.jsdelivr.net/npm/plyr@3.7.8/dist/plyr.min.css
+" rel="stylesheet">
+
+
+
+        <script
+        src="https://code.jquery.com/jquery-3.6.4.min.js"
+        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8="
+        crossorigin="anonymous"
+      ></script>
+
+
+        
+        <link href="https://imediaport.com:4646/css/mainmore.css" rel="stylesheet"/>
+
+        <link hhref=" https://imediaport.com:4646/css/mmmainstyle.css" rel="stylesheet"/>
+
+        <link href="https://imediaport.com:4646/css/main.css" rel="stylesheet"/>
+
+
+
+
+        <style>
+        
+        * {
+	box-sizing: border-box;
+}
+
+body {
+	font-family: "Open Sans", sans-serif;
+	margin: 0;
+	padding: 1rem;
+}
+
+article {
+	max-width: 70rem;
+	margin: 0 auto;
+	border: 0.18rem solid lightgrey;
+	padding: clamp(1rem, 2vw, 3rem);
+	border-radius: 0.5rem;
+}
+
+.list {
+  width: 100%;
+}
+
+h1, dl {
+	margin: 0;
+}
+
+article > * + * {
+	margin-top: 1rem;
+}
+
+dl {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
+	gap: 1rem;
+}
+
+dl > div {
+	background: antiquewhite;
+	padding: 1rem;
+}
+
+dl > div:nth-child(4n - 2) {
+	background: lavenderblush;
+}
+
+dl > div:nth-child(4n - 1) {
+	background: azure;
+}
+
+dl > div:nth-child(4n) {
+	background: lavender;
+}
+
+dt {
+	font-weight: 700;
+	font-size: 1.3rem;
+}
+
+dd {
+	margin: 0;
+}
+
+.xshow{
+overflow: hidden;
+height:400px;
+overflow-y: scroll;
+
+
+}
+         </style>
+        <style>
+
+.boxx {
+
+max-width: 690px;
+height: 50px;
+padding: 2px;
+font-size: 15px;
+
+border: 1px solid rgba(255, 255, 255, 0.25);
+border-radius: 10px;
+
+box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.25);
+
+backdrop-filter: blur(15px);
+display: grid;
+grid-template-columns: 100px 100px 1fr 1fr 1fr  1fr 1fr 1fr 1fr 50px;
+font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+width: 690px;
+
+}
+
+
+.boxxon {
+
+  border: 3px solid rgba(248, 11, 11, 0.76);
+  background-color: rgb(83, 50, 50);
+}
+
+.boxxnext {
+  border: 3px solid rgba(19, 246, 3, 0.25);
+  background-color: rgb(50, 83, 65);
+}
+  
+
+.boxxhidden{
+
+  display:none;
+}
+
+.boxxdisable{
+
+  pointer-events: none;
+  border: 3px solid rgba(81, 82, 81, 0.25);
+  background-color: rgb(44, 43, 43);
+}
+
+
+.boxxtitle {
+grid-column: 3/ 6;
+white-space: nowrap;
+overflow: hidden;
+height: 40px;
+}
+
+.shadowbox {
+gap: 2px;
+margin-left: -2px;
+box-shadow: inset 0 0 10px #121212;
+}
+
+.boxx-pix {
+grid-column: 10/ 11;
+height: 100px;
+border-radius: 10px;
+overflow: hidden;
+width: 100%;
+height: 100%;
+}
+
+.xdiv {
+border: 1px solid rgb(176, 173, 173);
+}
+
+.listinfo{
+grid-column: 1/2;
+margin-top: -35px;
+margin-left: 10px;
+}
+
+.listlog {
+grid-column: 2 / 3;
+
+height: 40px;
+
+}
+
+.boxxbuttons {
+grid-column: 6/9;
+width:190px;
+
+
+height: 40px;
+
+}
+
+.listpreview {
+grid-column: 6/7;
+margin-top:  -43px;
+margin-left: 10px;
+height: 40px;
+
+}
+
+.listup {
+grid-column: 7/8;
+margin-top:  -43px;
+margin-left: 10px;
+height: 40px;
+
+}
+
+.listdown {
+grid-column: 8/9;
+margin-top:  -43px;
+margin-left: 10px;
+margin-left: 10px;
+}
+
+
+a.cool {
+            color: rgb(189, 185, 185);
+            background-color: #393838;
+            width: fit-content;
+            border-radius: 10px;
+
+        }
+
+
+        a.cool:hover {
+            color: rgb(2, 44, 37);
+
+            background-color: #e8e8ed;
+
+
+        }
+
+
+  .youtube-video-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+}
+
+.youtube-video-container::after {
+  display: block;
+  content: "";
+  padding-top: 56.25%;
+}
+
+.youtube-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+body {
+
+  background-color: black;
+
+}
+
+#player {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  margin: auto;
+  cursor: pointer;
+}
+
+.youtube-player img {
+  width: 100%;
+}
+
+.youtube-player.pristine::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -15px;
+  margin-left: -25px;
+  height: 0;
+  width: 0;
+  border-left: 50px solid purple;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  transition: opacity .2s ease;
+}
+
+.youtube-player.pristine:hover::before {
+  opacity: .7;
+
+}
+
+.youtube-video-container {
+  position: absolute;
+  overflow: hidden;
+  width: 98VW;
+  height: 98VH;
+}
+
+.youtube-video-container::after {
+  display: block;
+  content: "";
+  padding-top: 56.25%;
+}
+
+          </style>
+    </head>
+    <body>
+
+
+
+     
+<div id="cpanel" hidden>
+ <div class="navbar bari navback"  >
+            
+              
+    <div name="fill1"> </div> <div id="logo" class="dlogo"> <img alt='NetPlay' class="ilogo" src="imediaportsmall.png">: Automated Playout System</div> <div class="navcue"> <div></div> <div></div>  <div name="here" id="info1"> 00:00 </div> </div>   <div class="navhost">  <div class="navclock" id="current-time"> 00:00:00</div></div><div name="file2"> filename</div>
+          </div>
+          
+          <div id="plisted" class="xshow"></div>
+          <div> <span id="ss">session</span><span id="sc"> session count</span></div>
+          <div id="show1"> Show1 here</div>
+          <div id="show2">show2 here</div>
+          <button onclick="play.now()"> Play Now</button>
+       
+
+</div><div class="youtube-video-container" >
+          <div id="player" class="youtube-video-container"  onclick="play.now()" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></div>
+   </div>
+          
+    <script>
+//var isPlayer = false;
+//var isCuePlayer= false;
+
+      // 2. This code loads the IFrame Player API code asynchronously.
+      var tag = document.createElement('script');
+
+      tag.src = "https://www.youtube.com/iframe_api";
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+
+var player;
+
+
+function onYouTubeIframeAPIReady(event) {
+    //userAgent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36"; 
+     //muter=(thisApp.system.isMobie)? 1:0;
+     muter=1;
+      console.log( "Ready for Youtube     ===================version[ 3.3c] ====================" );
+
+      player = new YT.Player("player", {
+        height: "100%",
+        width: "100%",
+        videoId: "H_H91h6-j9o",
+        playerVars: {
+          playsinline: 1,
+          enablejsapi: 1,
+          autoplay: 1,
+          volume: 1,
+          origin:'https://imediaport.com:4646',
+          mute : 0 ,
+          controls: 0,
+          disablekb: 1,
+          title: 0,
+          share: 0,
+        
+          autohide: 1,
+          enablejsapi: 1,
+        },
+        events: {
+          onReady: onPlayerReady,
+          onStateChange: onPlayerStateChange,
+        },
+      });
+    
+      setTimeout(() => {
+    
+        //document.getElementById("player").src = videosrc;
+        //player =document.getElementById("player");
+    
+        console.log ("mustplay(player);")
+    
+        //console.log(videosrc);
+      }, 2000);
+    }
+    
+
+
+  function onYouTubeIframeAPIReady1() {
+        player = new YT.Player('player', {
+          width: '100%',
+          height: '100%',
+          videoId: Video_ID,
+          playerVars: {
+            'playsinline': 1,
+         
+            'autoplay': 1,
+    
+            'enablejsapi': 1,
+           'mute':0,
+           origin : 'https://imediaport.com:4646/',
+            host: 'https://imediaport.com:4646/',
+             controls: 0,
+            autohide: 1,
+            wmode: 'opaque',
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+      }
+
+function onYouTubeIframeAPIReady2() {
+        this.player = new YT.Player('player', {
+          height: '390',
+          width: '480',
+            videoId: 'M7lc1UVf-VE',
+            playerVars: {
+            playsinline: 1,
+            autoplay: 1,
+            enablejsapi: 1,
+            mute :1,
+            origin : 'https://imediaport.com:4646/',
+            host: 'https://imediaport.com:4646/',
+             controls: 2,
+            autohide: 1,
+            wmode: 'opaque',
+          },
+          events: {
+            'onReady': onPlayerReady,
+            'onStateChange': onPlayerStateChange
+          }
+        });
+
+
+       // if (event.target.M=="player") isPlayer = true;
+      
+     // if (event.target.M=="cueplayer") isCuePlayer = true;
+      //console.log(event.target, " is now Ready to play");
+      //console.log(event.target.M, "- API is now Ready to play");
+    
+      }
+
+      // 4. The API will call this function when the video player is ready.
+      function onPlayerReady(event) {
+      //  if (event.target.M=="player") isPlayer = true;
+      
+        //if (event.target.M=="cueplayer") isCuePlayer = true;
+        //console.log(event.target, " is now Ready to play");
+        //console.log(event.target.M, " is now Ready to play");
+       // console.log(event.target.M, "..... is now Ready to play");
+        //console.log(event.target, " is now Ready to play");
+
+        setInterval(play.clock, 1000);
+
+       playVideo();
+       playReady = true;
+        
+      }
+
+      // 5. The API calls this function when the player's state changes.
+      //    The function indicates that when playing a video (state=1),
+      //    the player should play for six seconds and then stop.
+      var done = false;
+
+      var count=0;
+      function onPlayerStateChange(event) {
+        if (event.data == YT.PlayerState.PLAYING && !done) {
+          setTimeout(playVideo, 6000);
+          done = true;
+        }
+      }
+      function stopVideo() {
+        player.stopVideo();
+      }
+
+      function playVideo() {
+        player.playVideo();
+      }
+
+
+      function   onPause() {};      // on video pause
+      //function  onEnd() {};        // on video end
+      //function  onBuffer() {}; 
+      //function onReady () {
+       // $('#player').play();
+
+      //}; ''
+      //function  onStart() {  console.log("Playing ......");}; 
+      //function  onEnd() {}; 
+      //const onStateChange = ()=>{ }
+
+      var tag = document.createElement('script');
+
+
+// 3. This function creates an <iframe> (and YouTube player)
+//    after the API code downloads.
+
+
+
+</script>
+    </body>
+    </html>

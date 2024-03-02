@@ -1,0 +1,48 @@
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+
+<% include ./partials/iscript %>
+<% include ./partials/head %>
+
+
+
+	<% include ./partials/top-header %>
+<div class="login-form">
+	<h2 class="text-center  text-light">Reset your password</h2>
+<% if(typeof err != 'undefined' ){%>
+				<div class="alert alert-dismissible alert-danger">
+  				<button class="close" type="button" data-dismiss="alert">&times;</button>
+  				<strong><%= err %></strong> 
+				</div>	
+<% } %>
+<% if(success_msg != '' ){ %>
+                <div class="alert alert-dismissible alert-success">
+                <button class="close" type="button" data-dismiss="alert">&times;</button>
+                <strong><%= success_msg %></strong> 
+                </div>  
+<% } %>
+
+<% if( error != '' ){%>
+        <div class="alert alert-dismissible alert-danger">
+        <button class="close" type="button" data-dismiss="alert">&times;</button>
+        <strong><%= error %></strong>
+        </div>
+<% } %>    <form action="/forget" method="POST">
+		<div class="avatar">
+			<img src="/images/avatar3.png" alt="Avatar">
+		</div>           
+		<div class="form-group">
+           <label class="col-form-label">Enter your user account's verified username address and we will send you a password reset link.</label>
+							<input type="username" class="form-control" placeholder="username " name="username" id="username" required=""
+							value="<%= typeof username != 'undefined' ? username : '' %>" />
+        </div>
+        <div class="form-group clearfix">
+            <button type="submit" class="btn btn-primary btn-lg pull-right">Send password reset username</button>
+        </div>		
+    </form>
+</div>
+</body>
+</html>                            

@@ -1,0 +1,438 @@
+ 
+
+
+<link             href="../css/offcanvas-navbar.css"    rel="stylesheet">
+<link             href="../css/index.css"               rel="stylesheet">
+<script type= "text/javascript"            src="../js/jquery-3.6.3.min.js" ></script> 
+<script script type= "text/javascript"         src="../config/config.js" ></script>
+
+
+
+
+
+  <script type= "text/javascript"            src="../js/system.js"      ></script>
+  <script type= "text/javascript"            src="../js/channels.js"      ></script>
+  <script type= "text/javascript"            src="src/main.js"      ></script>
+
+  <script type= "text/javascript"          src = "../js/countries.js" ></script>
+  <script type= "text/javascript"          src="../js/youtubeApi.js"  ></script>
+
+<script>
+
+
+</script>
+
+
+  <style>
+
+    </style>
+    <!-- Custom styles for this template -->
+
+  </head>
+  <link         href="../css/index.css"               rel="stylesheet">
+  <script>
+
+
+//end of function
+
+
+  </script>
+  <body class="bg-light mt-10 pt-5"  >
+
+
+<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation" style=" width: 98%;">
+  <div class="container-fluid"  style=" width: 98%;">
+    <a class="navbar-brand" href="#"> <img  style=" margin-left: 80px;" class="me-3"  src="../assets/brand/1tv-logoxt.png" alt="" ></a>
+    <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" style=" width: 98%;">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Network Manager</a>
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="#">Profile</a>
+       
+      </ul> 
+      <div style="padding:0;">
+      <formm class="d-flex" role="search">
+        <select  style="left: 10px; width: 160px; ; margin: 10px;"  onchange="modeaction(this)"  id="modeSelect" name="modeSelect"  name="linkType"  class="   form-control"   >
+          <option value="new">:::CREATE</option>
+          <option value="update">:::UPDATE </option>
+          <option value="duplicate">:::DUPLICATE</option>
+          <option value="suspend">:::SUSPEND</option>
+          <option value="delete">:::DELETE</option>
+         
+        </select>
+
+      
+        <select  style="left: 20px; margin: 10px;" disabled  onblur="muchchange(this)" onchange="loadform(this)" id="cidSelect"  name="cidSelect"  class=" form-control" style=" width:120px; float: left;  "  required >
+          <option value="New"> New Channels..</option> 
+        </select>
+        <input class="fform-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="showResult(this.value)" style=" width:150px; float: left ;left: 20px; margin: 10px;">
+        <div id="livesearch"></div>
+        
+       
+      </formm>
+    </div>
+  </div>
+
+</nav>
+
+<div class="nav-scroller bg-body shadow-sm">
+  <div  height="300px" width="100%" class="" style="height: 400px" >
+
+  </div>
+  <nav class="nav" aria-label="Secondary navigation">
+    <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
+    <a class="nav-link" href="#">
+      Friends
+      <span class="badge text-bg-light rounded-pill align-text-bottom">27</span>
+    </a>
+    <a class="nav-link" href="#">Explore</a>
+    <a class="nav-link" href="#">Suggestions</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+    <a class="nav-link" href="#">Link</a>
+
+
+  </nav>
+
+</div> <br>
+
+
+
+<div align="center" style="overflow: auto; width: 85%%; align-items: center; background-color: black ;"  class=" pt-10" height="340px" width="400px" class="d-flex align-items-center p-3 my-3 text-white bg-purple rounded shadow-sms center"   >
+
+  <div id="player"> </div>
+  <iframe id="player2" src="" style="overflow: auto; height: 480px ;width: 84%; align-items: center; margin: auto; display: none; "> </iframe>
+
+  <script>
+    // 2. This code loads the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+  //  var player;
+
+
+    var done = false;
+
+  </script>
+
+
+</div>
+
+
+<!--
+`id` int(10) NOT NULL,
+`cNumber` int(4) NOT NULL,
+`cid` varchar(12) NOT NULL,
+`cFname` varchar(50) NOT NULL,
+`cInfo` varchar(100) NOT NULL,
+`streamUrl` varchar(100) NOT NULL,
+`streamUrlType` varchar(50) NOT NULL,
+`streamUrlMore` varchar(50) IS NULL,
+`logoUrl` varchar(100) NOT NULL,
+`thumbUrl` varchar(50) IS NULL,
+`cmemo` varchar(250) IS NULL,
+`country` int(4) NOT NULL,
+`ctype` int(4) NULL,
+`ckeyword` varchar(50) IS NULL,
+
+  main windows start -->
+
+<div align="center" style="overflow-y: auto; width:85%; text-align: center;;  margin: auto; align:center">
+
+<main class="container" style="background-color:;">
+  <div class="my-3 p-3 bg-body rounded shadow-sm" style="height: 800px;">
+
+
+
+
+
+<div style="float: left; ;  width:100%;  margin-left: 10px; align-items: center ;"   >
+<h4><p id="messager">Welcome to 1Tv Network Manager, New Channel.  </p></h4>
+</div>
+
+
+  <form  class="was-validated " id="channelform" name="channelform" method="dialog"  onsubmit="return submitChannel(event)">
+    
+
+
+
+      <!-- 2 column grid layout with text inputs for the first and last names -->
+      <div class="row mb-4">
+        <div class="col">
+
+          <div class="form-outline" >
+
+            <input type="text"  size="50" id="iframe"  name="streamUrl" class="facontrol form-control" onchange="embedIt(this.value)" onblur="embedIt(this.value)"  placeholder="Live Streaming, Youtube emebed or ifarme Embed URL ...http://yourserver.." required />
+  <label  class="form-label" for="iframeUrl" class=" form-control"  style=" "  > Enter Stream Url </label>
+
+<!--
+http://localhost/live/cmanger/?iframeUrl=dfdf&iframe_url=undectected&cid=&infoD=&fileToUpload=&cid=&infoD=&country=Afghanistan
+-->
+<input type="text" id="xcid" name="xcid"  hidden>
+
+
+
+  <div style="float: left; ;  width:100%;  margin-left: 10px;  ;"   >
+
+<select onchange="formEvenCheck(this)"   id="iframe_url" name="streamUrlType"  name="linkType"  class="   form-control" style=" width:50%; float: left;  "   required>
+<option value="undectected"> Select Above URL link type..</option>
+<option value="yEmbed">1. Youtube Embed URL iframe </option>
+<option value="yLink1">2. Youtube Embed direct URL</option>
+<option value="yLink2">3. Direct Youtube URL</option>
+<option value="iFrameS">4. Secured HTTPS iFrame URL code</option>
+<option value="iFrame">5.  HTTP: iFrame URL code</option>
+<option value="m3u8S">6. m3u8 HTTPS/HLS Live Streaming media Secure link</option>
+<option value="m3u8">7. m3u8 HTTP/HLS Live Streaming media link</option>
+<option value="httpS">8.  HTTPS Direct link please see if it plays</option>
+<option value="http">9. HTTP Direct link please see if it plays.</option>
+<option value="otherS">10. Other Secured HTTPS link give details</option>
+<option value="other">11. Other Secured HTTP link give details</option>
+<option value="yVideoID">12. Youtube Video ID</option>
+<option value="..Other">13. Others .. </option>
+<option value="yTPlembed">14. Embed youtube Playlist .. </option>
+ </select>
+
+     
+<input   cname="streamUrlMore"  id="streamUrlMore"
+  style="  width:48%; padding: 13px; margin-left: 30px: 30px;margin: 3px; float: left;  display: inline-block;"  type="text"   size="15"  
+    tips="detail about stream URL" placeholder="about url" onchange="formEvenCheck(this)" class="facontrol form-control"  disabled />
+      </div>
+  
+<label  class="form-label" style="width:98%; ;" id="forstremUrlMore" for="linkType" > Select stream type or allow for auto detection </label>
+
+<div  class="form-outline" id="pix-side" style="width:67%; float: left; ; display: inline-block; ">
+<div style="width:100% ; " >
+   
+
+  <input required style="width:22%; margin-left: 10px;" type="number" 
+  onchange="formEvenCheck(this)" name="cNumber"    id="cNumber"  size="6" maxlength="6" minlength="4"  class="facontrol  form-control" placeholder=" Channel#" />
+
+ <span class="input-group-text facontrol" style="  padding: 8px; float: left; display: inline-block; ; width:auto; margin: 10px;;" id="validationTooltipUsernamePrepend">@</span>
+<input style="width:20%;"   type="text"  id="cid" onchange="formEvenCheck(this)" maxlength="12" minlength="6"
+ name="cid" size="10" id="cid" tips="" placeholder=" Channel_ID" required  onchange="checkCID(this)"  onkeyup="checkCID(this)"  class="facontrol  form-control" tips="The Short Channel ID name" required/>
+<input style="width:42%; "  type="text"  id="cName"   name="cName" size="15" maxlength="30" minlength="6"
+ onchange="formEvenCheck(this)" class="facontrol  form-control" tips="The Short Channel ID name" placeholder=" Channel Full Name" required/>
+</div>
+
+<input type="number" name="key"  size="12" id="key" hidden />
+
+<div style="width:100% ; float: left;" >
+  <label  class=""  > Channel Number </label>
+  <label  name="forcid" id="forcid" class=""  style=" float: left; ; width:40% " > channel ID, no space  </label>
+  <label  class=""  style=" float: right; ; width:30% " > Enter full channel Name</label>
+</div>
+
+  <div style=" width:100% ; float: left" class="form-outline" >
+  <input type="text"  size="100" id="cInfo" onchange="formEvenCheck(this)"maxlength="100" minlength="15" name="cInfo" class=" form-control"  placeholder="Channel  description " required/>
+
+  <label  class="form-label" id="forcInfo" for="inforD"> Brief description</label> </div>
+</div> <div id="samplelogo"  style="   padding: 10px 10px; margin: 8px ; display: inline-block; width:30%; height: 130px;background-image: url('https://1tv.ng/images/id/1tv-home.png'); background-position: center; background-size: 200px; background-repeat: no-repeat;float: left;  " > </div>
+
+ </div> 
+
+
+<div style=" width:100% ; float: left" >
+
+<input type="text" name="logoUrl" onchange="formEvenCheck(this)" onblur="formEvenCheck(this)" maxlength="200" minlength="8"class=" form-control" size="200" id="logoUrl" style=" float:left; width:66% "   class="" placeholder=" enter a channel logo Url here " required/>
+
+
+
+<input   style=" float:left; width: 30% ;font-size: 12px; margin: 8px; "for="logoUrl" type="file"  name="logoUrl"  id="fileToUpload" class="supress"  />
+
+
+
+
+</div  >
+<label name="forlogoUrl" id="forlogoUrl" class="" style=" float: left; width:40% "  > enter logo url or upload  logo here </label>
+<label name="forfileToUpload"  id="forfileToUpload" class="" style=" float:right; width:50% "  > ... </label></p>
+ 
+<div style=" width:100% ; float: left" >
+
+<input type="text" name="thumbUrl" onchange="formEvenCheck(this)" maxlength="50" minlength="0" onblur="formEvenCheck(this)" class=" form-control" size="50" id="thumbUrl" style=" float:left; width:66% "   class="" placeholder=" enter a channel Thumb nail Url here " />
+  
+  
+  
+  
+  <input   style=" float:left; width: 30% ;font-size: 12px; margin: 8px; " for="thumbUrl" type="file"  name="thumbUrl"  id="thumbsUp" class="supress"  onchange="loadfile(this)"/>
+ 
+  
+  
+  
+  </div  >
+<label  name="forThumbnail" id="forthumbnail" class="" style=" float: left; width:40% "  > enter channel Thumbnail url here or upload one </label>
+  <label name="forthumbsUp"  id="forthumbsUp" class="" style=" float:right; width:50% "  > ... </label></p>
+ 
+ 
+ 
+  <input type="text" onchange="formEvenCheck(this)" name="cmemo" id="cmemo"  maxlength="250" class="form-control" placeholder="enter detail info about channel" />
+
+
+ <label  style="width=50%" class="form-label" id="forcmemo" for="cmemo"> Detailed Description of the channel</label>
+
+          </div>
+        </div>
+        <div style=" width:100% ; float: left">
+
+          <select class="facontrol" style="  padding: 12px, 20px;
+            margin: 3px , 0;margin-left: 10px;display: inline-block;; width:32% ; float: left" onchange="print_state('state',this.selectedIndex);" id="country"   name="country" required>
+       </select>
+     
+              <select name ="state" id ="state"  class="facontrol" style="  padding: 12px ,20px;
+                margin: 3px, 0;margin-left: 10px; display: inline-block;  width:32% ; float: left" required></select>
+     
+              <select name="ctype" id="ctype" class="facontrol"  style="  padding: 12px , 20px;
+                margin: 3px , 0; margin-left: 10px;display: inline-block;width:32% ; float: left" required >
+                  <option value="">Select..</option>
+              </select>
+            </div> <div style=" width:100% ; float:left">
+             <label  class=""  > Country: </label>
+             <label  class=""  > City/District/State: </label>
+             <label  class=""  > Channel type </label>
+           </div>
+           <input type="text" onchange="formEvenCheck(this)" name="ckeyword" id="ckeyword" maxlength="50" class="form-control" placeholder=" keyword for channel " />
+           <label  class="form-label" id="forckeyword" name="forckeyword" for="ckeyword"> keyword to find  channel</label>
+
+
+
+           <input  class="btn btn-primary btn-block mb-4" id="sendbutton" style="  width: 98%;  margin:  8px;  background-color: green "  type="submit" value="Create New Channel" >
+     <!-- Checkbox -->
+     <div  style=" width:98% ; float:left">
+      <input style=" width:5% ; float:left"  type="checkbox" value="" id="form6Example8" unchecked  required />
+      <label style=" width:20% ; float:left" class="form-check-label" for="form6Example8" > All is ok and Aproved? </label> 
+     
+      <label  style=" width:40% ; float:left" class="form-label" id="forsubmit" name="forsubmit" for="submit"> submit to create or update channel</label>
+    </div>
+
+     </div>
+   
+</main >
+
+<!---
+`id` int(10) NOT NULL,
+`cNumber` int(4) NOT NULL,
+`cid` varchar(12) NOT NULL,
+`cFname` varchar(30) NOT NULL,
+`cInfo` varchar(50) NOT NULL,
+`streamUrl` varchar(50) NOT NULL,
+`streamUrlType` int(4) NOT NULL,
+`streamUrlMore` varchar(50) IS NULL,
+`logoUrl` varchar(50) NOT NULL,
+`thumbUrl` varchar(50) IS NULL,
+`cmemo` INT(4) IS NULL,
+`country` int(4) IS NULL,
+`ctype` int(4) IS NULL,
+`ckeyword` varchar(50) IS NULL,
+
+  main windows start -->
+
+    <!-- start of moreform-->
+
+
+
+    <!-- end of moreform -->
+
+        
+      <!-- Submit button -->
+      </div>
+
+
+
+      
+    </form>
+
+
+</div>
+<!---    main windows  ends-->
+
+
+
+    </div>
+
+    <div class="d-flex text-muted pt-3">
+      <svg class="bd-placeholder-img flex-shrink-0 me-2 rounded" width="32" height="32" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 32x32" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#6f42c1"/><text x="50%" y="50%" fill="#6f42c1" dy=".3em">32x32</text></svg>
+      <p class="pb-3 mb-0 small lh-sm border-bottom">
+        <strong class="d-block text-gray-dark">@username</strong>
+        This user also gets some representative placeholder content. Maybe they did something interesting, and you really want to highlight this in the recent updates.
+      </p>
+    </div>
+
+  </div>
+
+</main>
+
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Bottom navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <ul class="dropdown-menu" aria-labelledby="dropdown10">
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netadmin"> Network Admin</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netman"> Channel Manager</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+     
+    </ul>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item dropup">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="false">Dropup</a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown10">
+            <ul class="dropdown-menu" aria-labelledby="dropdown10">
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netadmin"> Network Admin</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netman"> Channel Manager</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+              <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+         
+        </ul>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Page Script -->
+<script src="../js/scripts.js"></script>
+
+
+    <script ssrc="../js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+      <script ssrc="../js/offcanvas-navbar.js"></script>
+  </body>
+  <script language="javascript">
+</script>
+
+</html>

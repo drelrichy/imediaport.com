@@ -1,0 +1,248 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+    <link rel="apple-touch-icon"  href="../assets/favicons/apple-touch-icon.png"      sizes="180x180">
+    <link rel="icon"              href="../assets/favicons/favicon-32x32.png"         sizes="32x32" type="image/png">
+    <link rel="icon"              href="../assets/favicons/favicon-16x16.png"         sizes="16x16" type="image/png">
+    <link rel="manifest"          href="../assets/favicons/favicons/manifest.json">
+    <link rel="mask-icon"         href="../assets/favicons/safari-pinned-tab.svg"     color="#712cf9">
+    <link rel="icon"              href="../assets/favicons/favicon.ico">
+    <link rel="stylesheet" href="src/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="src/css/owl.carousel.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="src/css/bootstrap.min.css">
+    
+    <!-- Style -->
+    <link rel="stylesheet" href="src/css/style.css">
+    <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script type= "text/javascript"            src="../js/jquery-3.6.3.min.js" ></script> 
+
+<script script type= "text/javascript"         src="../config/config.js" ></script>
+    <script type= "text/javascript"            src="../js/system.js"      ></script>
+    <script type= "text/javascript"            src="../js/channels.js"      ></script>
+    <script type= "text/javascript"            src="src/main.js"      ></script>
+
+    <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+
+      .b-example-divider {
+        height: 3rem;
+        background-color: rgba(0, 0, 0, .1);
+        border: solid rgba(0, 0, 0, .15);
+        border-width: 1px 0;
+        box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+      }
+
+      .b-example-vr {
+        flex-shrink: 0;
+        width: 1.5rem;
+        height: 100vh;
+      }
+
+      .bi {
+        vertical-align: -.125em;
+        fill: currentColor;
+      }
+
+      .nav-scroller {
+        position: relative;
+        z-index: 2;
+        height: 2.75rem;
+        overflow-y: hidden;
+      }
+
+      .nav-scroller .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        padding-bottom: 1rem;
+        margin-top: -1px;
+        overflow-x: auto;
+        text-align: center;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+      }
+    </style>
+
+    
+    <!-- Custom styles for this template -->
+    <link href="navbar-fixed.css" rel="stylesheet">
+
+    <title>1TV Network Admin</title>
+  </head>
+  <body class="bg-light mt-10 pt-5"  >
+
+
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation" style=" width: 100%;">
+      <div class="container-fluid"   style="margin-left: 100px; width: 100%;"  style="scroll-margin-right: 100px;">
+        <a class="navbar-brand" href="#"> <img  style=" margin-left: 80px;" class="me-3"  src="../assets/brand/1tv-logoxt.png" alt="" ></a>
+        <button class="navbar-toggler p-0 border-0" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault" style=" width: 98%; margin-right: 100px;">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="#">Network </a>
+            </li>
+    
+            <li class="nav-item">
+              <a class="nav-link" href="#">Profile</a>
+           
+          </ul> 
+          <div style="padding:0;"  style="margin-right: 100px;">
+          <formm class="d-flex" role="search">
+            <select  style="left: 10px; width: 160px; ; margin: 10px;"  onchange="modeaction(this)"  id="modeSelect" name="modeSelect"  name="linkType"  class="   form-control"   >
+              <option value="new">:::CREATE</option>
+              <option value="update">:::UPDATE </option>
+              <option value="duplicate">:::DUPLICATE</option>
+              <option value="suspend">:::SUSPEND</option>
+              <option value="delete">:::DELETE</option>
+             
+            </select>
+    
+          
+            <select  style="left: 20px; margin: 10px;" disabled  onblur="muchchange(this)" onchange="loadform(this)" id="cidSelect"  name="cidSelect"  class=" form-control" style=" width:120px; float: left;  "  required >
+              <option value="New"> New Channels..</option> 
+            </select>
+            <input class="fform-control me-2" type="search" placeholder="Search" aria-label="Search" onkeyup="showResult(this.value)" style=" width:150px; float: left ;left: 20px; margin: 10px;">
+            <div id="livesearch"></div>
+            
+            <button type="button" class="btn btn-success gap-3"  style="height: 40px; margin: 10px;">Update!</button>
+           
+          </formm>
+        </div>
+      </div>
+    
+    </nav>
+
+  <div class="content">
+    
+    <div class="container">
+      <div style="float: left; ;  width:100%;  margin-left: 10px; align-items: center ;"   >
+        <h4><p id="messager">Welcome to 1Tv Network Manager, New Channel.  </p></h4>
+        </div>
+        
+
+      <div class="table-responsive">
+
+        <table class="table table-striped custom-table">
+          <thead>
+            <tr>
+              <th scope="col">
+                <label class="control control--checkbox">
+                  <input type="checkbox"  class="js-check-all"/>
+                  <div class="control__indicator"></div>
+                </label>
+              </th>
+              <th scope="col">Select </th>
+              <th scope="col">Activate</th>
+              <th scope="col">Channel # Info</th>
+              <th scope="col">Brand</th>
+              <th scope="col">Type</th>
+              <th scope="col">More</th>
+              <th scope="col">update</th>
+            </tr>
+          </thead>
+
+          <tbody id="table">
+            
+
+            
+          </tbody>
+        </table>
+      </div>
+
+
+    </div>
+
+  </div>
+    
+    
+<nav class="navbar fixed-bottom navbar-expand-sm navbar-dark bg-dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" style="margin-left: 100px;"   href="#">Bottom navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+      <ul class="navbar-nav">
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netadmin">Network Admin</a></li>
+          <li><a  class="dropdown-item"target="_blank" href="https://onetv.ng/netman">Channel Manager</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netadmin"> Network Admin</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netman"> Channel Manager</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+          <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Link</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+        </li>
+        <li class="nav-item dropup">
+          <a class="nav-link dropdown-toggle" href="#" id="dropdown10" data-bs-toggle="dropdown" aria-expanded="true">1NETWORK ADMIN/a>
+          <ul class="dropdown-menu" aria-labelledby="dropdown10">
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netadmin"> Network Admin</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/netman"> Channel Manager</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/stream">Streamtest</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/home">OneTV Movies</a></li>
+            <li><a class="dropdown-item" target="_blank" href="https://onetv.ng/iplay">OneTV iPlay</a></li>
+       
+      </ul>
+    </div>
+  </div>
+</nav>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<!-- Bootstrap JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<!-- Page Script -->
+<script src="../js/scripts.js"></script>
+
+
+    <script ssrc="../js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+      <script ssrc="../js/offcanvas-navbar.js"></script>
+  </body>
+  <script language="javascript">
+</script>
+
+    <script src="src/js/jquery-3.3.1.min.js"></script>
+    <script src="src/js/popper.min.js"></script>
+    <script src="src/js/bootstrap.min.js"></script>
+    <script src="src/js/main.js"></script>
+  </body>
+</html>

@@ -1,0 +1,369 @@
+
+<style>
+  .body{
+
+background-color: black;
+margin: 0px;
+padding: 0px;
+
+  }
+
+.icontainer {
+width: 100%;
+height: 60vh;
+
+overflow: hidden;
+overflow-y: auto;
+
+position: relative;
+border-radius: 3px;
+
+}
+
+
+.icontainer ol {
+margin: 0;
+gap: 1rem;
+padding: 0;
+display: flex;
+list-style: none;
+
+flex-direction: column;
+counter-reset: my-counter;
+}
+.icontainer ol li {
+width: 40rem;
+
+color: #fff;
+border-radius: 3px;
+background: rgba(94, 89, 89, 0.7);
+counter-increment: my-counter;
+padding: 1.1rem 1.5rem 1.1rem 1.5rem;
+}
+.icontainer ol li::before {
+content: counter(my-counter) ". ";
+}
+
+
+.sx{
+color: #8ff98f;
+background: rgba(37, 69, 49, 0.7);
+
+}
+</style>
+
+<!-- partial:index.partial.html -->
+<div id="epglist" class="icontainer">
+<ol id='lepg'>
+  <li>Parentheses</li>
+  <li>Exponents</li>
+  <li>Multiplication</li>
+</ol>
+</div>
+
+
+<script>
+  var  imessage ;
+var engx  = false;
+var  sessionTime =0;
+var padClock =0;
+//$("#lepg").html("");
+
+
+//const VBASESERVER  = window.location.origin;
+VBASESERVER  = 'https://imediaport.com:4646';
+
+//ch_id =(ch_i!= null) ?ch_i:ch_id;
+//const TV_URL = VBASESERVER + "/api/play/" +ch_id;
+const TV_URL = VBASESERVER + "/api/play/" +channel_id;
+
+const  play = {
+nflag: false,
+cflag:false,
+pflag: false,
+
+engine: function (cdata){
+  $("#lepg").html("");
+//this  = {...data};
+console.log("<====xxx============  | ======x1 0 1x====== | ============xx========>");
+
+//      console.log(ldata.data);
+//const {status, message , channel , schedule, data} = cdata;
+this.CDATA =cdata;
+this.VASSETS= this.CDATA.schedule.list;
+console.log(this.VASSETS);
+
+const f1 = `<div  id="plist">
+  <article id='vlist' >
+    <h1>Program list for ${this.CDATA.channel.channel_name}</h1>
+    <dl id='lchild'>
+    
+      </dl>
+      </article> </div>`;
+
+if (engx )$('#plisted').html(f1);
+
+
+var lastCT=0; 
+$("#lepg").html("");
+
+
+var isAGO= false;
+this.VASSETS.forEach((vasset,i )=> {
+  className= "";
+if( vasset.epg.start=== null){
+vasset.epg.start = lastCT;
+
+vasset.epg.end = lastCT +  vasset.epg.duration ;
+
+}
+
+
+
+timex = imedia.secondsToClockM(vasset.epg.start) +" - "+imedia.secondsToClockM(vasset.epg.end) + '  |' + imedia.secondsToClockM(vasset.epg.duration) ;
+
+      const f2 =` <div class="list">
+        <dt>${timex}</dt>
+        <dd>${vasset.video_title}</dd>
+      </div>`;
+
+     // $("#lepg").append(`<li ${className}>${timex} :: ${vasset.video_title}</li>`);
+    //var  f3=`<li>${timex} : ${vasset.video_title}</li>`;
+
+   // $("#lepg").append(f3);
+   // $("#epglist").append("<b>Appended text</b>");
+
+      lastCT = vasset.epg.end;
+
+});
+
+play.init();
+
+
+},
+now: function(){
+
+play.init();
+player.unMute();
+
+}
+,
+
+init: function (){
+VASSETS = this.VASSETS;
+
+const { serverZTime ,sessionCount,  serverTime, stationDurationTime, stationStartTime} = this.CDATA.channel;
+
+
+ const sessionTime = padClock + this.CDATA.channel.sessionTime;
+
+iTime = serverZTime ;
+
+
+loadUp= 0;
+xfound = 0;
+var nIndex =0;
+var nOffSet = 0;
+isAGO = false;
+var lmxx ="";
+VASSETS.forEach((program,i)=>{
+//timex = imedia.secondsToClockM(program.epg.start) +" - "+imedia.secondsToClockM(program.epg.end) + '  |' + imedia.secondsToClockM(program.epg.duration) ;
+
+timex = imedia.secondsToClockM(program.epg.start) +" - "+imedia.secondsToClockM(program.epg.end);
+
+if(loadUp + program.duration > sessionTime  && xfound === 0){
+  isAGO = true;
+// last list here before this
+className ="";
+xfound =1;
+nIndex =i;
+nOffSet =  ( sessionTime  - loadUp );
+Video_ID = program.video_id;
+//console.log(program);
+//$('#show2').html(program.program_name);
+
+console.log (">>"+ loadUp, imedia.secondsToClock(loadUp)+"|"+imedia.secondsToClock(sessionTime));
+
+console.log ("D:" +program.duration+":"+imedia.secondsToClock(program.duration) + "index ="+nIndex ,"offset="+  nOffSet+" | "+imedia.secondsToClock(nOffSet));
+lmxx= "D:" +program.duration+":"+imedia.secondsToClock(program.duration) + "index ="+nIndex ,"offset="+  nOffSet+" | "+imedia.secondsToClock(nOffSet);
+
+//play.at({video_id: program.video_id, nIndex, nOffSet});
+
+
+$("#lepg").append(`<span class='sx'><li ${className}   > ${timex} :: ${program.video_title}</li> </span>`);
+
+}
+
+else {
+  
+  //console.log (loadUp, imedia.secondsToClock(loadUp));
+
+if(isAGO) $("#lepg").append(`<li ${className}>${timex} :: ${program.video_title}</li>`);
+}
+ //imessage = ` Scount = ${sessionCount}, loadUp = ${loadUp}, STime = ${sessionTime} :${imedia.secondsToClock(sessionTime)} , ServerZTime = ${serverZTime} : ${imedia.secondsToClock(serverZTime)}, serverTime= ${serverTime}, stationDurationTime = ${stationDurationTime}, stationStartTime = ${stationStartTime}`
+
+ imessage = ` SsT = ${sessionTime} :${imedia.secondsToClock(sessionTime)} `; 
+ //`ServerZTime = ${serverZTime} : ${imedia.secondsToClock(serverZTime)}, serverTime= ${serverTime}, stationDurationTime = ${stationDurationTime}, stationStartTime = ${stationStartTime}`
+
+
+
+//$('#show1').html(imessage+"  "+lmxx);
+
+
+loadUp += program.duration;
+
+
+})
+
+
+}
+
+,
+at: function (mxl){
+const {video_id, nOffSet, nIndex } = mxl; 
+//console.log(player);
+
+this.pload = mxl;
+this.pflag= true;
+
+//player.cueVideoById(video_id, nOffSet);
+//player.playVideo();
+
+},
+clock: function (){
+
+if (!playReady) return
+
+//console.log(" // if (!playReady) return");
+
+if(play.pflag){
+const {video_id, nOffSet, nIndex } = play.pload ; 
+this.nIndex= nIndex;
+
+//console.log(player);
+
+play.pflag= false;
+
+//player.loadVideoById(video_id, nOffSet);
+//player.loadVideoByUrl(`https://www.youtube.com/watch?v=${video_id}&autoplay=1&mute=1&t=${nOffSet}`);
+
+//player.loadVideoByUrl(`https://www.youtube.com/watch?v=4yD2RxaQm6M&t=16s`);
+//player.playVideo();
+
+
+}
+var duration = 0;
+var pT= lT= null;
+//const duration = this.VASSETS[this.nIndex].duration;
+//const  pT= player.getCurrentTime();
+//const  lT= Math.round(player.getDuration() - player.getCurrentTime());
+
+
+if(lT < 5 && !play.cflag){ 
+
+play.nflag= true;
+play.cflag= true;
+
+//console.log("  >>>>>>>>>>>>>>>>>>>>>>>?="+this.VASSETS.length, this.nIndex +1 );
+
+
+
+vasset = this.VASSETS[this.nIndex];
+
+//player.cueVideoById(vasset.video_id);
+
+}
+
+
+if(lT < 2 && play.nflag){ 
+
+if (this.VASSETS.length > this.nIndex +1){
+
+//this.nIndex++; =============
+
+} else {
+
+
+this.nIndex = 0;
+
+
+}
+vasset = this.VASSETS[this.nIndex];
+
+play.nflag = false;
+play.cflag = false;
+// player.loadVideoById(vasset.video_id);=============
+//player.loadVideoByUrl(`https://www.youtube.com/watch?v=${video_id}&autoplay=1&mute=1&t=${nOffSet}`);
+
+//player.loadVideoByUrl(`https://www.youtube.com/watch?v=4yD2RxaQm6M&t=16s`);
+
+//player.playVideo();==========
+
+
+}
+
+
+
+
+
+
+
+// console.log(pT);
+
+//$('#').html('#:'+this.nIndex+"  "+imedia.secondsToClock(pT)+"    :: "+padClock+"  |"+ lT);
+
+
+padClock++;
+
+//if(player.getPlayerState()!==1)padClock++;
+play.init();
+
+$("#infox").html(  sessionTime+" | "+padClock+" | "+imessage );
+
+}
+
+}
+
+//VBASESERVER  = 'https://imediaport.com:4646';
+//$("#lepg").html("");
+ TTV_URL = VBASESERVER + "/api/play/" +channel_id;
+
+//console.log("============>>>", TTV_URL);
+
+const mxu =axios(TTV_URL).then((ldata) => {
+ //   console.log(ldata.data);
+
+//$("#lepg").html("");
+const {status, message , channel , schedule, data } = ldata.data;
+
+//$("#lepg").html("--01",message);
+
+if(status){
+
+  //console.log("<================  | ======101====== | ====================>");
+
+play.engine(ldata.data);
+
+//$("#lepg").html("--ggggg----");
+
+playReady = true;
+//console.log(player);
+//
+setInterval( play.clock, 1000);
+
+};
+
+  });
+
+var iClock=0;
+function playclock(){
+  play.init();
+
+ //$("#infox").html( iClock++);
+
+}
+
+
+ // setInterval( playclock, 60000);
+  //infox
+</script>

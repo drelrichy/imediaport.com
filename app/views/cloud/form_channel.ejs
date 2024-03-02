@@ -1,0 +1,470 @@
+<% include ../codebase/station_code%>
+
+
+
+<% 
+console.log("Case 0");
+var valueData;
+var channel_id;
+var  channel_role;
+
+channel_name="";
+
+var username;
+//username = (typeof username == 'undefined') ? user.username :username 
+var r_username ="";
+var r_channel_id="";
+
+//console.log(user.adminchannel);
+if(typeof returned != 'undefined'){
+    console.log("+++++++++++++++++++ Case 1");
+r_username = returned.email;
+r_channel_id= returned.channel_id;
+
+}
+
+
+ username =(typeof user != 'undefined')? user.username:r_username  ;
+//var channel_id =(typeof user != 'undefined')? user.username:r_username  ;
+%>
+<div class="channel_form_container">
+    <div id="" class="formhouse">
+
+        <form class="row gy-2 gx-3 align-items-center shadow   needs-validation" autocomplete="on" action="/create_channel"  method="post" >
+   <div class="shadow  col-md-12 ">
+                <h3 class="center">Channel Manger 2.0</h3>
+
+       <% 
+
+      const non_c = {channel:"", role:'new'};
+//disDatOr
+
+
+
+if(typeof user !='undefined' && typeof  returned  == 'undefined'){
+
+    console.log("+++++++++++++++++++ Case 2");
+  var  owner = user.name;
+  var email = user.username;
+  //var channel_id = user.
+
+  //console.log("at 10", user);
+
+
+  valueData = (user.adminchannel==""|| user.adminchannel===[]||user.adminchannel==[""])? non_c :user.adminchannel[0];
+ 
+    // console.log("at 11", valueData);
+ channel_id =valueData.channel_id;
+ channel_role =valueData.channel_id;
+
+
+
+
+
+   } else {
+
+console.log("+++++++++++++++++++Case 3");
+
+   //if(typeof !returned2 === 'undefined'){
+    if( typeof returned  != 'undefined'){
+        console.log("+++++++++++++++++++ Case 4");
+
+var {channel_id, country ,owner,email,channel_name,password, channel_info,contact_email,telephone_contact,address,city,start_time,timezone,logo,cbrand,thumbnail,adminrole2, adminemail2,adminrole3,adminemail3,ckeyword} = returned;
+   
+   
+
+     //console.log("at 12", valueData);
+
+     channel_id =returned.channel_id ;
+    username =returned.email;
+
+} else{
+   
+    console.log("Case 5");
+    var valueData = {
+         adminchannel:"", 
+    channel:"" };
+
+    channel_id ='';
+    username ='';
+   }
+
+//console.log("+++++++++++++++++++at 13", valueData);
+
+    }
+
+   
+if (typeof channel_name == 'undefined' || channel_name == "" )channel_name = channel_id; 
+
+
+     //let uxt = non_c;
+      %>
+
+
+               
+            </div>
+
+            <%= typeof  returned  != 'undefined' ? returned.id:""%>
+            <div class="avatar clear ">
+                <img src="/images/avatar3.png" alt="Avatar">
+            </div>    
+            <div class="clear">   </div>         
+
+<% if(typeof err != 'undefined' ){%>
+    <div class="alert alert-dismissible alert-danger">
+      <button class="close" type="button" data-dismiss="alert">&times;</button>
+      <strong><%= err %></strong> 
+    </div>	
+  <% } %>
+  <% if(success_msg != '' ){ %>
+            <div class="alert alert-dismissible alert-success">
+            <button class="close" type="button" data-dismiss="alert">&times;</button>
+            <strong><%= success_msg %></strong> 
+            </div>  
+  <% } %>
+  
+  <% if( error != '' ){%>
+    <div class="alert alert-dismissible alert-danger">
+    <button class="close" type="button" data-dismiss="alert">&times;</button>
+    <strong><%= error %></strong>
+    </div>
+  <% } %>
+  
+  
+    <div class="col-md-6">
+
+                <label for="" class="form-label">* Channel ID</label>
+                <div class="input-group">
+
+                    <div class="input-group-text">
+                        <i class="fa-solid fa-key"></i>
+                    </div>
+
+                    <input type="text" class="form-control" id="channel_id" value="<%= channel_id %>"  name="channel_id" placeholder="channel_id" minlength="5" maxlength="12" required onchange="imedia.checkChannel_ID(this)" onkeyup="imedia.checkChannel_ID(this)">
+                </div>
+                <label class="form-label smallwhite"   id="forchannel_id" for="channel_id">Channel ID</label>
+            </div>
+
+            <div class="col-md-6">
+                <label for="" class="form-label">Owner / Organisation / Company Name</label>
+                <input type="text" class="form-control "  value="<%=owner %>" id="owner" name="owner" placeholder="" >
+                <label class="form-label smallwhite" for="owner">Ownership</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="" class="form-label">* Admin E-mail</label>
+                <input type="text" class="form-control dnd " id="email" value="<%= typeof username !='undefined' ? username:'' %>" name="email" placeholder="" required>
+                <label class="form-label smallwhite" id="foremail" for="email">Admin Email</label>
+            </div>
+
+
+            <div class="col-md-4">
+                <label for="" class="form-label">
+                  Channel  Password</label>
+                <input type="password" class="form-control " placeholder=" " name="password" id="password" required=""
+                value="<%= typeof password != 'undefined' ? password : '' %>" >
+                <label class="form-label smallwhite" for="password">new</label>
+            </div>
+
+            <div class="col-md-4">
+                <label for="" class="form-label">Channel Full Name</label>
+                <input type="text" class="form-control" id="channel_name" value="<%= typeof channel_name !='undefined'? channel_name :'' %>" name="channel_name" minlength="3" maxlength="60"  placeholder="">
+                <label class="form-label smallwhite" id="forchannel_name" for="channel_name">Channel Name</label>
+            </div>
+            <div class=" col-12">
+
+
+                <div class="form-check form-switch form-check-inline col-2">
+                    <input class="form-check-input" type="checkbox" name="serv_tv" id="serv_tv" value="true">
+                    <label class="form-check-label" id="forserv_tv" for="serv_tv">Television</label>
+                </div>
+
+                <div class="form-check form-switch form-check-inline col-2">
+                    <input class="form-check-input" type="checkbox" name="serv_radio" id="serv_radio" value="true">
+                    <label class="form-check-label" id="forserv_radio" for="serv_radio">Radio</label>
+                </div>
+
+                <div class="form-check form-switch form-check-inline col-2">
+                    <input class="form-check-input" type="checkbox" id="serv_audio" name="serv_audio" value="true">
+                    <label class="form-check-label" id="forserv_audio" for="serv_audio">AudioCAST</label>
+                </div>
+                <div class="form-check form-switch form-check-inline col-2">
+                    <input class="form-check-input" type="checkbox" name="serv_video" id="serv_video" value="true">
+                    <label class="form-check-label" id="forserv_video" for="serv_video">VideoCAST</label>
+                </div>
+                <div class="form-check form-switch form-check-inline col-2">
+                    <input class="form-check-input" type="checkbox" name="serv_port" id="serv_port" value="true">
+                    <label class="form-check-label" id="forserv_port" for="serv_port">iPORT</label>
+                </div>
+            </div>
+            <div class="col-12">
+                <label for="" class="form-label optional">Channel Info</label>
+                <input type="text" class="form-control " id="channel_info" name="channel_info" placeholder="">
+                <label class="form-label smallwhite" id="forchannel_info" for="channel_info">Channel Info</label>
+            </div>
+            <div class="col-12">
+                <label for="" class="form-label optional">External Video Source or Playlist</label>
+                <input type="text" class="form-control " id="source" name="source" placeholder="youtube playlist">
+                <label class="form-label smallwhite" id="forsource" for="source">Video Source</label>
+            </div>
+
+        </div>
+
+
+   
+
+        <!---      Breaker -->
+        <div class="formhouse shadow  col-md-12 input-group optional">
+
+
+            <div class="col-6 optional">
+                <label for="" class="form-label">Contact Email</label>
+                <input type="text" class="form-control " id="contact_email" name="contact_email" placeholder="">
+                <label class="form-label smallwhite" id="forcontact_email" for="contact_email">Channel e-mail contact</label>
+            </div>
+
+            <div class="col-6 optional">
+                <label for="" class="form-label">Contact  Phone/Whatsapp</label>
+                <input type="text" class="form-control" id="telephone_contact" name="telephone_contact" placeholder="">
+                <label class="form-label smallwhite" id="fortelephone_contact" for="telephone_contact">Channel Info</label>
+            </div>
+
+            <div class="col-12 optional">
+                <label for="" class="form-label">Contact Address</label>
+                <input type="text" class="form-control dnd" id="address" name="address" placeholder="">
+                <label class="form-label smallwhite" id="foraddress" for="address">Owners Address</label>
+            </div>
+
+
+            <div class="col-md-5">
+                <label for="inputCity" class="form-label">Country</label>
+
+                <select onchange="print_state('state',this.selectedIndex);" id="country" name="country"  class="form-select"></select>
+                <label class="form-label smallwhite" id="forcountry" for="country">Country</label>
+            </div>
+            <div class="col-md-4">
+                <label for="inputState" class="form-label">State</label>
+                <select name="state" id="state" class="form-select" value="New York" ></select>
+                <label class="form-label smallwhite" id="forstate" for="state">State</label>
+            </div>
+            <div class="col-md-3">
+                <label for="" class="form-label">City</label>
+                <input type="text" class="form-control" name="city" value="New york" id="city">
+                <label class="form-label smallwhite" id="forcity" for="city">Channel City</label>
+            </div>
+
+
+            <div class="col-md-4">
+                <select id="start_time"  name="start_time" class="form-select"  name="station_start_time">
+                    <option value="0">
+                        00:00:00</option>
+                    <option value="21600" selected>06:00:00</option>
+                    <option value="43200">12:00:00</option>
+                    <option value="64800">18:00:00</option>
+                    <option value="86400">24:00:00</option>
+                </select>
+                <label class="form-label smallwhite" id="forstart_time" for="start_time">
+                    Station Start Time</label>
+            </div>
+            <div class="col-md-4">
+                <select id="duration_time" class="form-select" name="station_duration_time">
+                    <option value="0">
+                        00:00:00</option>
+                    <option value="21600" selected>06:00:00</option>
+                    <option value="43200">12:00:00</option>
+                    <option value="64800">18:00:00</option>
+                    <option value="86400">24:00:00</option>
+                </select>
+                <label class="form-label smallwhite" id="forduration_time" for="duration_time">
+                    Station Duration</label>
+            </div>
+            <div class="col-md-4">
+                <select id="timezone" name="timezone" class="form-select">
+                    <option value="-12:00">(GMT -12:00) Eniwetok, Kwajalein</option>
+                    <option value="-11:00">(GMT -11:00) Midway Island, Samoa</option>
+                    <option value="-10:00">(GMT -10:00) Hawaii</option>
+                    <option value="-09:50">(GMT -9:30) Taiohae</option>
+                    <option value="-09:00">(GMT -9:00) Alaska</option>
+                    <option value="-08:00">(GMT -8:00) Pacific Time (US &amp; Canada)</option>
+                    <option value="-07:00">(GMT -7:00) Mountain Time (US &amp; Canada)</option>
+                    <option value="-06:00">(GMT -6:00) Central Time (US &amp; Canada), Mexico City</option>
+                    <option value="-05:00">(GMT -5:00) Eastern Time (US &amp; Canada), Bogota, Lima</option>
+                    <option value="-04:50">(GMT -4:30) Caracas</option>
+                    <option value="-04:00">(GMT -4:00) Atlantic Time (Canada), Caracas, La Paz</option>
+                    <option value="-03:50">(GMT -3:30) Newfoundland</option>
+                    <option value="-03:00">(GMT -3:00) Brazil, Buenos Aires, Georgetown</option>
+                    <option value="-02:00">(GMT -2:00) Mid-Atlantic</option>
+                    <option value="-01:00">(GMT -1:00) Azores, Cape Verde Islands</option>
+                    <option value="+00:00">(GMT) Western Europe Time, London, Lisbon, Casablanca</option>
+                    <option value="+01:00" selected>(GMT +1:00) Brussels, Madrid, Paris, Lagos, W/Africa</option>
+                    <option value="+02:00">(GMT +2:00) Kaliningrad, South Africa</option>
+                    <option value="+03:00">(GMT +3:00) Baghdad, Riyadh, Moscow, St. Petersburg</option>
+                    <option value="+03:50">(GMT +3:30) Tehran</option>
+                    <option value="+04:00">(GMT +4:00) Abu Dhabi, Muscat, Baku, Tbilisi</option>
+                    <option value="+04:50">(GMT +4:30) Kabul</option>
+                    <option value="+05:00">(GMT +5:00) Ekaterinburg, Islamabad, Karachi, Tashkent</option>
+                    <option value="+05:50">(GMT +5:30) Bombay, Calcutta, Madras, New Delhi</option>
+                    <option value="+05:75">(GMT +5:45) Kathmandu, Pokhara</option>
+                    <option value="+06:00">(GMT +6:00) Almaty, Dhaka, Colombo</option>
+                    <option value="+06:50">(GMT +6:30) Yangon, Mandalay</option>
+                    <option value="+07:00">(GMT +7:00) Bangkok, Hanoi, Jakarta</option>
+                    <option value="+08:00">(GMT +8:00) Beijing, Perth, Singapore, Hong Kong</option>
+                    <option value="+08:75">(GMT +8:45) Eucla</option>
+                    <option value="+09:00">(GMT +9:00) Tokyo, Seoul, Osaka, Sapporo, Yakutsk</option>
+                    <option value="+09:50">(GMT +9:30) Adelaide, Darwin</option>
+                    <option value="+10:00">(GMT +10:00) Eastern Australia, Guam, Vladivostok</option>
+                    <option value="+10:50">(GMT +10:30) Lord Howe Island</option>
+                    <option value="+11:00">(GMT +11:00) Magadan, Solomon Islands, New Caledonia</option>
+                    <option value="+11:50">(GMT +11:30) Norfolk Island</option>
+                    <option value="+12:00">(GMT +12:00) Auckland, Wellington, Fiji, Kamchatka</option>
+                    <option value="+12:75">(GMT +12:45) Chatham Islands</option>
+                    <option value="+13:00">(GMT +13:00) Apia, Nukualofa</option>
+                    <option value="+14:00">(GMT +14:00) Line Islands, Tokelau</option>
+                </select>
+                <label class="form-label smallwhite" id="fortimezone" for="timezone">Time Zone</label>
+            </div>
+
+        </div>
+        &#160; &#160;
+        <!---      Breaker -->
+        <div class="formhouse shadow  row gy-2 gx-3 align-items-center shadow col-md-12 input-group ">
+
+            <div>
+                <label class="form-label smallwhite" for="channel_id">Logos and Thumbnails</label>
+            </div>
+            <div class="col-md-10">
+
+
+                <div>
+                    <label class="form-label " for="channel_id">Station  Logo</label>
+                    <div class="input-group mb-12">
+                        <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                        <input type="file" class="form-control" id="inputGroupFile01" hidden>
+                        <div class="input-group-text">
+                            <i class="fa-solid fa-share"></i>
+                        </div>
+                        <input type="text" class="form-control" id="logo" name="logo" value="https://imediaport.com/assets/img/logo_hold.png">
+                        <label class="form-label smallwhite" id="forlogo" for="logo">
+                            upload or type logo URL</label>
+                    </div>
+
+                </div>
+                <!---
+                  <div class="clear">  </div>-->
+                <label for="channel_id">
+                    Channel Branding ID Logo</label>
+                <div class="input-group mb-12 -gwhite">
+                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                    <input type="file" class="form-control" id="file03" hidden>
+                    <div class="input-group-text">
+                        <i class="fa-solid fa-share"></i>
+                    </div>
+                    <input type="text" class="form-control" id="cbrand" name="cbrand" value="https://imediaport.com/assets/img/id_hold.png">
+
+                    <select class="col-md-3 form-select" id="cbrand_select">
+                        <option value="admin">..None</option>
+                        <option value="edit">same as logo</option>
+                        <option value="manage">enter</option>
+                        <option value="supervise">Supervisor</option>
+                    </select>
+                    <label class="form-label smallwhite" if="forcband_select" for="cband_select">
+                        upload or type logo URL</label>
+                </div>
+
+
+                <label class="form-label " for="">
+                    Station  Thumbnail
+                </label>
+                <div class="input-group mb-12 -gwhite ">
+                    <label class="input-group-text" for="inputGroupFile01">Upload</label>
+                    <input type="file" class="form-control" id="file012" hidden>
+                    <div class="input-group-text">
+                        <i class="fa-solid fa-share"></i>
+                    </div>
+                    <input type="text" class="form-control" id="thumbnail" name="thumbnail" value="https://imediaport.com/assets/img/humb_hold.png">
+                    <label class="form-label smallwhite" id="forthumbnail" for="thumbnail">
+                        upload or type logo URL</label>
+                </div>
+
+
+            </div>
+            <div class="col-md-2 gap-space-4">
+                <img id="logo_img" src="https://imediaport.com/assets/img/logo_hold.png" class="col-md-12 rounded img-thumbnail float-end" alt="logo for channel">
+                <img id="cbrand_img" src="https://imediaport.com/assets/img/id_hold.png" class="col-md-12 rounded img-thumbnail float-end" alt="...">
+                <img id="thumbnail_img" src="https://imediaport.com/assets/img/thumb_hold.png" class="col-md-12 rounded img-thumbnail float-end" alt="...">
+            </div>
+          </div>
+          &#160; &#160;
+          <!---      Breaker -->
+          <div class="formhouse shadow  row gy-2 gx-3 align-items-center shadow col-md-12 input-group ">
+  
+            <div class="col-md-3">
+                <label class="form-label" for="autoSizingSelect">2nd Admin Role</label>
+                <select class="form-select" id="adminrole2"  name="adminrole2">
+                    <option selected>Choose...</option>
+                    <option value="admin">Admin</option>
+                    <option value="edit">Editor</option>
+                    <option value="manage">Manager</option>
+                    <option value="supervise">Supervisor</option>
+                </select>
+                <label class="form-label smallwhite" for="adminemail2">Admin</label>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label" for="autoSizingSelect">2nd Admin Email</label>
+                <input type="text" class="form-control" id="adminemail2" name="adminemail2" placeholder="">
+                <label class="form-label smallwhite" for="adminemail">Admin</label>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label" for="autoSizingSelect">3nd Admin Role</label>
+                <select class="form-select" id="adminrole3" name="adminrole3">
+                    <option selected>Choose...</option>
+                    <option value="admin">Admin</option>
+                    <option value="edit">Editor</option>
+                    <option value="manage">Manager</option>
+                    <option value="supervise">Supervisor</option>
+                </select>
+                <label class="form-label smallwhite" for="adminrole3">Admin</label>
+            </div>
+
+            <div class="col-md-3">
+                <label class="form-label" for="autoSizingSelect">3nd Admin Email</label>
+                <input type="text" class="form-control" id="adminemail3" name="adminemail3" placeholder="">
+                <label class="form-label smallwhite" for="adminemail3">Admin</label>
+            </div>
+
+
+            <div>
+                <input type="text" onchange="imedia.formEvenCheck(this)" name="ckeyword" id="ckeyword" maxlength="50" class="form-control" placeholder=" keyword for channel "/>
+                <label class="form-label" id="forckeyword" name="forckeyword" for="ckeyword">
+                    keyword to find  channel</label>
+            </div>
+
+
+            <div class="input-group mb-3">
+                <div class="input-group-text">
+                    <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                </div>
+                <input type="text" class="form-control" placeholder="All is ok and Approved for Channel creation/Update " aria-label="Text input with checkbox">
+            </div>
+
+            <div>
+                <input class="btn btn-primary btn-block mb-12" id="sendbutton" style="background-color: green" type="submit" value="Create New Channel">
+                <label class="form-label smallwhite" id="forsubmit" name="forsubmit" for="submit">
+                    submit to create or update channel</label>
+                <!-- Checkbox -->
+              </div>
+
+    
+              &#160; &#160;
+              <!---      Breaker -->
+              <div class="formhouse shadow  row gy-2 gx-3 align-items-center shadow col-md-12 input-group ">
+      
+            </div>
+        </form>
+
+    </div>
+
+
+</div>

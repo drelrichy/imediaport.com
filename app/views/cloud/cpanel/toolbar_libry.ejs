@@ -1,0 +1,42 @@
+<form >
+    <div class="toolbar_background  input-group btn btn-group mb-4 libry_view_screen_footer" >
+       <div class="toolbar-group" >
+
+       <button class="toolbar " onclick="imedia.callFunction('welcome')" type="button"><i class=" fas fa-house-chimney-user iconBut"></i>Home</button>
+         
+            <button class="toolbar" onclick="imedia.callFunction('playlist')"  type="button"><i class="fa-solid fa-layer-group  iconBut"></i>Playlist</button>             
+            <button class="toolbar" onclick="imedia.callFunction('programs')" type="button"><i class="fa-solid fa-layer-group  iconBut"></i>Programs</button>
+            <button class="toolbar" onclick="imedia.callFunction('epg')"  type="button"><i class="fa-solid fa-layer-group  iconBut"></i>EPG</button>
+            <button class="toolbar" onclick="imedia.callFunction('libry')" type="button"><i class="fa-solid fa-truck-fast" ></i>Libry</button>
+            <button class="toolbar"onclick="imedia.callFunction('schedule')"  type="button"><i class="fa-solid fa-truck-fast"></i>Schedule</button>
+        </div>
+ <label class="toolbar cuselect toolbar ">
+            <select id="function"  name="function" class="toolbar form-select toolbar "  onchange='imedia.functionSwitch(this,event)'>
+                <option value="welcome" selected>:Home!</option>
+                <option value="playlist">:Playlist</option>
+                <option value="schedule">:Schedule</option>
+                <option  value="epg">:EPGuide</option>
+                <option  value="libry">:Library</option>
+                <option  value="programs">:Programs</option>
+                <option  value="calendar">:Calendar</option>
+                <option  value="timelist">:Timelist</option>
+            </select>
+      </label>
+       <div hidden>
+        <button class="toolbar btn btn btn-dark infox iconBut" onclick="imedia.savePlaylist()" type="button"><i class="fa-solid fa-layer-group  iconBut"></i>Playlist</button>              
+            <button class="toolbar btn btn btn-dark infox iconBut" onclick="imedia.savePlaylist()" type="button"><i class="fa-solid fa-layer-group  iconBut"></i>Playlist</button>
+            <button class="toolbar btn btn btn-primary infox iconBut" onclick="imedia.makeLibry(this,event)" type="button"><i class="fa-solid fa-truck-fast" ></i>Libry</button>
+            <button class="btn btn btn-danger infox iconBut" onclick="imedia.makeSchedule(this,event)" type="button"><i class="fa-solid fa-truck-fast"></i>Schedule</button>
+      </div>
+
+     
+        </div>
+      
+    </form>
+
+
+   
+
+    <script>
+   //onchange='imedia.selectSwitch(this)' onclick='imedia.selectClick(this)';
+   </script>

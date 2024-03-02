@@ -1,0 +1,64 @@
+
+
+
+<% if( user ) {%>
+
+	
+	<nav class=" navbar-fixed-top nav_main ">
+		
+		<div class="nav_main_logo"> 
+				   
+					   <p class="text-white text-lg-left text-center"> <img src="images/imedialogo.png" />
+					   
+					   </p></div>
+			   
+					   <!-- header lists -->
+			   
+						<div class="nav_main_user"> 
+						   <div class="btn-group boomgap" role="group" aria-label="Basic example">
+							   <a  href="/profile/<%= user.username %>"><button type="button" href="/profile/<%= user.username %>" class="btn btn-secondary">@<%= user.name %></button></a>
+							   <a  href="/channel">	<button type="button" href="/login" class="btn btn-secondary">channel</button></a>
+							   <a  href="/logout">	<button type="button" href="/logout"class="btn btn-secondary">Logout</button></a>
+							 </div>
+					   </div>
+					   <!-- //header lists -->
+				   
+			   
+		   
+
+<% }else{ %>
+
+	
+	<nav class=" navbar-fixed-top nav_main ">
+		
+		<div class="nav_main_logo"> 
+				   
+					   <p class="text-white text-lg-left text-center"> <img src="images/imedialogo.png" />
+					   
+					   </p></div>
+			   
+					   <!-- header lists -->
+			   
+						<div class="nav_main_user"> 
+						   <div class="btn-group boomgap" role="group" aria-label="Basic example">
+							   <a  href="/serv"><button type="button" href="/serv"class="btn btn-secondary">Cloud</button></a>
+							   <a  href="/login">	<button type="button" href="/login" class="btn btn-secondary">Login</button></a>
+							   <a href="/register">	<button type="button" href="/register"class="btn btn-secondary">Register</button></a>
+							 </div>
+					   </div>
+					   <!-- //header lists -->
+				   
+			   
+		   
+		 </nav>
+
+	
+<% } %>
+
+
+<div style="height: 80px;"></div>
+
+	
+	<!-- //shop locator (popup) -->
+
+	<!-- //top-header -->

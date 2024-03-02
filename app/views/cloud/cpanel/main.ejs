@@ -1,0 +1,174 @@
+<sstyle hidden>
+
+
+.search-box{
+
+grid-gap: 0px;
+padding: 0px, 0px;
+gap:0px;
+
+}
+
+.msearch-box{
+
+margin: auto;
+display: grid;
+
+
+background: linear-gradient(
+  hsla(0, 1%, 18%, 0.2),
+  transparent 50%,
+  hsla(0, 0%, 4%, 0.3)
+),
+var(--clr_bg);
+}
+
+
+.back-box{
+vertical-align: baseline; 
+ height: 40px;
+  color: #b6b4b4;
+            font-size: 14px;
+  background: linear-gradient(
+              hsla(0 0% 100% / 0.2),
+              transparent 50%,
+              hsla(0 0% 0% / 0.3)
+            ),
+            var(--clr_bg);
+          text-align: right;
+          transition: transform 250ms ease;
+          cursor: default;
+          /* text-shadow: 0 0 5px hsla(0 0% 50% / 0.75); */
+          --clr_bg: #131315;
+	--clr_accent: #161616;
+}
+
+.search_icon{
+
+  
+  color: #b6b4b4;
+}
+
+
+.borderline{
+border: 4px solid #131315;
+
+}
+
+.Title_text{
+width: 240px;
+height: 120px;
+
+
+}
+.formXitme{
+  margin-top: 5px;
+  margin-left: 5px;
+  height: 25px;
+}
+
+.formXitmein{
+  margin-top: 0px;
+  margin-left: 5px;
+  height: 28px;
+  width: 80px;
+}
+</sstyle>
+<script>
+imedia.username = GLOBAL.usernme = username ='<%=user.username%>';
+imedia.channel_id= GLOBAL.channel_id= channel_id='<%=channel.channel_id%>';
+
+
+
+</script>
+
+
+
+<% include ../../partials/popup %>
+<div class="top_gap clear"></div>
+<iframe class="ticker" src="https://onetv.ng/ticker" borderwidth="0"  padding="0px" margin="0px" width="100%" height="30px" scrollbar="0" hidden></iframe>
+<div class="main-box main_control_panel" >
+
+	<div class="main_control_tv_loadlibrary"><!-- 1. The <iframe> (and video player) will replace this <div> tag. -->
+		<iframe id="iplayer"  width= "360px" height= "180px" class="playlist_tv"  src="https://www.youtube.com/embed/BQ9HlA0e0is?autoplay=1&mute=1&origin=https://imediaport.com" title="Introducing iMediaPORT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+  </div> 
+	<div class="main_control_tv_editplaylist" info='TwoA'> 
+<div id="msgbox-area" class="msgbox-message-container"></div>
+<% include ../cpanel/playlist.view.ejs%>
+
+  </div> <div class="main_control_tv_livechannel" asIn="EPG">
+		<iframe id="player"  width= "290px" height= "180px" class="live_tv" src="https://onetv.ng/stream/?ch=1word"></iframe>
+		
+		
+		</div>
+	
+
+
+	<div class="main_control_info_loadlibrary back-box "> 
+		
+		
+			<div class="md-12  search_Box_casex ">
+			
+
+     <div class="formXitme md-12 input-group">
+      <select id="searchType" class=" infox form-select-sm" aria-label=".form-select-sm example"> 
+        <option value="youtubesearch">YouTube</option>
+        <option value="ytplaylist"> YT-Playlist</option>
+        <option value="ytvideo">YT-Video</option>
+        <option value="mp4">MP4</option>
+        <option  value="facebook">FaceBook</option>
+       </select> 
+      <input id="masterinput" type="text" placeholder="Search.." name="search"  size="12" class="searchIn infox formXitmein md-2 form-control"  aria-label="Recipient's username" aria-describedby="button-addon2">
+      <button id="universalclick" class="searchBut infox md-3 form-control" onclick="imedia.masterClick()" type="button"><i class="fa search_icon fa-search searchBut "></i></button>
+    </div>
+		 
+	</div>
+    
+ </div>
+ 
+ 
+ <div class="main_control_info_editplaylist back-box" >  <% include ../cpanel/libry.toolbar.ejs%></div> <div class="back-box main_control_info_livechannel"> 
+  <% include ../cpanel/epg.toolbar.ejs%> </div>
+	
+<!--
+
+    The Main Window Panels  
+    1. Library Panel
+
+    2. Edit_Play_List Panel
+
+    3. Live Playlist or EPG
+-->
+
+    <div class="main_control_loadlibrary" info="OneC 1C"> 
+	
+        <% include ../cpanel/main_search%>
+	</div>
+
+    
+  <div class="main_control_main_window" asin=" The window for major activities" info="TwoC 2C">
+        <% include ../cpanel/main_window%>
+        </div>
+     
+     <div class="main_control_livechannel" info="ThreeC 3C">
+        <% include ../cpanel/main.epg.ejs%></div>
+	
+	<div class="main_control_btn_loadlibrary" info="OneD 1D"> 
+        <% include ../cpanel/search.footer.ejs%>
+    
+       
+  
+
+    </div> 
+    <div class="main_control_btn_editplaylist" info="TwoD">
+       <% include ../cpanel/playlist.footer.ejs%>
+  
+    </div>
+
+
+     <div class="main_control_btn_livechannel" info="ThreeD 3D">
+      <% include ../cpanel/epg.footer.ejs%>
+     </div>
+
+   
+</div>

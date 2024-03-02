@@ -1,0 +1,86 @@
+
+<%  const $HR="https://imediaport.com:4646/"%>
+
+
+<% if(typeof user != 'undefined') {%>
+
+	<nav class="navbar-fixed-top nav_main">
+
+					<div class="nav_main_logo"> 
+				   
+					   <img src="<%-$HR%>images/imedialogo.png" />
+					   
+					   
+					</div>
+
+					<div class="nav_main_active"> 
+				   
+					<p class="smart_text">[<%=typeof channel != 'undefined'? channel.channel_id:'hi!'%>]</p>	
+						
+						
+					 </div>
+			   
+					   <!-- header lists -->
+					
+
+
+						<div class="nav_main_user"> 
+						   <div class="btn-group btn-group-sm boomgap" role="group" aria-label="Basic example">
+							 <a href="/serv">	<button type="button" href="/register" class="btn btn-secondary btn-sm">iHome</button></a>
+							   <a  href="/profile/<%= typeof user != 'undefined' ? user.username:"" %> "><button type="button" href="/profile/<%=  typeof user != 'undefined' ? user.username:"%>" class=" btn btn-success btn-sm">@ <%= user.name %> </button></a>
+							   <a   href="/channel" >	<button type="button" href="/channel" class="btn btn-secondary btn-sm">channel</button></a>
+							   <a  href="/logout">	<button type="button" href="/logout"class="btn btn-secondary btn-sm">Logout</button></a>
+							</div>
+					   </div>
+					   <!-- //header lists -->
+				   
+
+
+
+		
+	</nav>		   
+		   
+
+<% }else{ %>
+
+	
+	<nav class=" navbar-fixed-top nav_main ">
+		
+		<div class="nav_main_logo"> 
+				   
+					   <p class="text-white text-lg-left text-center"> <img src="<%=$HR%>images/imedialogo.png" />
+					   
+					   </p></div>
+			   
+					   <!-- header lists -->
+			   
+						<div class="nav_main_user"> 
+
+						   <div class="btn-group btn-group-sm boomgap" role="group" aria-label="main" >
+							 
+							   <a  href="/serv"><button type="button" href="/serv"class="btn btn-secondary btn-sm">Cloud Base</button></a>
+							   <a  href="/login">	<button type="button" href="/login" class="btn btn-secondary btn-sm">Login</button></a>
+							   <a href="/register">	<button type="button" href="/register"class="btn btn-secondary btn-sm">Register</button></a>
+							 </div>
+
+					   </div>
+					   <!-- //header lists -->
+					   <div class="nav_main_middle"> </div>
+			   
+		   
+					</nav>
+
+	
+<% } %>
+
+
+
+
+
+<div class="fixed-bottom nav_main">
+	<div></div> <div>iMediaPORT Systmen </div>  </div>
+
+	
+	<!-- //shop locator (popup) -->
+
+	<!-- //top-header -->

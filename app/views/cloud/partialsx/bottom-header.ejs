@@ -1,0 +1,144 @@
+	
+<% if( user ) {%>
+	<!-- header-bottom-->
+	<div class="header-bot">
+		<div class="container">
+			<div class="row header-bot_inner_wthreeinfo_header_mid">
+				<!-- logo -->
+				<div class="col-md-3 logo_agile">
+					<h1 class="text-center">
+					
+						 <select name="searchtype" >
+								<option >Youtube</option>
+								<option > mp4</option>
+								<option > Youtube Live</option>
+								<option > Live RMTP</option>
+
+							</select>
+					
+					</h1>
+				</div>
+				<!-- //logo -->
+				<!-- header-bot -->
+				<div class="col-md-9 header mt-4 mb-md-0 mb-4">
+					<div class="row">
+						<!-- search -->
+						<div class="col-10 agileits_search">
+							<form class="form-inline" action="/admin/pro_search" method="POST">
+								<input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search" required>
+								<button class="btn my-2 my-sm-0" type="submit">Search</button>
+							</form>
+						</div>
+						<!-- //search -->
+						<!-- cart details -->
+						<div class="col-2 top_nav_right text-center mt-sm-0 mt-2">
+							<div class="wthreecartaits wthreecartaits2 cart cart box_1">
+								<form action="#" method="post" class="last">
+									<input type="hidden" name="cmd" value="_cart">
+									<input type="hidden" name="display" value="1">
+									<button class="btn w3view-cart" type="submit" name="submit" value="">
+										<i class="fas fa-cart-arrow-down"></i>
+									</button>
+								</form>
+							</div>
+						</div>
+						<!-- //cart details -->
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<ul>
+		<li class="text-center border-right text-white">
+			<a class="play-icon popup-with-zoom-anim text-white" href="#small-dialog1">
+				<i class="fas fa-map-marker mr-2"></i>See Video</a>
+		</li>
+		</ul>
+	
+	<!-- shop locator (popup) -->
+	<!-- //header-bottom -->
+
+	<% }else{ %>
+	 <!-- ======= Pricing Section ======= -->
+	 <section id="pricing" class="pricing">
+		<div class="container" data-aos="fade-up">
+	
+		  <div class="section-title">
+			<h2>Pricing</h2>
+			<p>Join now for Massive Discount </p>
+		  </div>
+	
+		  <div class="row">
+	
+			<div class="col-lg-4" data-aos="fade-up" data-aos-delay="100">
+			  <div class="box">
+				<h3>Online TV Plan</h3>
+				<h4><sup>$</sup>200<span>per month</span></h4>
+				<ul>
+				  <li><i class="bx bx-check"></i>Playout link from  Youtube and Mp4</li>
+				  <li><i class="bx bx-check"></i>Inetractive playout</li>
+				  <li><i class="bx bx-check"></i>Portable to websites and Embeding</li>
+				  <li><i class="bx bx-check"></i>Logo and channel branding</li>
+				  <li class="na"><i class="bx bx-x"></i> <span>rtmp and hls video streaming</span></li>
+				  <li class="na"><i class="bx bx-x"></i> <span>live video feed</span></li>
+				</ul>
+				<a href="https://imediaport.com:4646/register" class="buy-btn">Get Started</a>
+			  </div>
+			</div>
+	
+			<div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="200">
+			  <div class="box featured">
+				<h3>Cable TV Plan</h3>
+				<h4><sup>$</sup>500<span>per month</span></h4>
+				<ul>
+				  <li><i class="bx bx-check"></i>Playout link from  Youtube and Mp4</li>
+				  <li><i class="bx bx-check"></i>Inetractive playout</li>
+				  <li><i class="bx bx-check"></i>Portable to websites and Embeding</li>
+				  <li><i class="bx bx-check"></i>Logo and channel branding</li>
+				  <li><i class="bx bx-check"></i> <span>rtmp and hls video streaming</span></li>
+				  <li><i class="bx bx-check"></i> <span>live video feed</span></li>
+				</ul>
+				<a href="https://imediaport.com:4646/register" class="buy-btn">Get Started</a>
+			  </div>
+			</div>
+	
+			<div class="col-lg-4 mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+			  <div class="box">
+				<h3>TV Network Plan</h3>
+				<h4><sup>$</sup>2000<span>per month</span></h4>
+				<ul>
+				  <li><i class="bx bx-check"></i>Playout link from  Youtube and Mp4</li>
+				  <li><i class="bx bx-check"></i>Inetractive playout</li>
+				  <li><i class="bx bx-check"></i>Portable to websites and Embeding</li>
+				  <li><i class="bx bx-check"></i>Logo and channel branding</li>
+				  <li><i class="bx bx-check"></i> <span>rtmp and hls video streaming</span></li>
+				  <li><i class="bx bx-check"></i> <span>live video feed</span></li>
+				  <li><i class="bx bx-check"></i>Dedicated Server backup</li>
+				  <li><i class="bx bx-check"></i> <span>3 Sites </span></li>
+				  <li><i class="bx bx-check"></i> <span>Mutiple Administrators</span></li>
+	
+				</ul>
+				<a href="https://imediaport.com:4646/register" class="buy-btn">Get Started</a>
+			  </div>
+			</div>
+	
+		  </div>
+	
+		</div>
+	
+	  </section><!-- End Pricing Section -->
+	  <% } %>
+
+	  
+	  
+	  <script>
+
+
+
+	  const accessChannels= 
+	   <%= typeof user != 'undefined' ? user.adminchannel: '' %> ; 
+
+	 
+	  </script>
+
+ <%= typeof user != 'undefined' ? user: ''  %> 

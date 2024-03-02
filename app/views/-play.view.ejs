@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script type="text/javascript" src="https://onetv.ng:8040/public/config/config.js"> </script>
+  <script type="text/javascript" src="https://onetv.ng:8040/public/js/jquery.min.js"></script>
+  <script type="text/javascript" src="https://onetv.ng:8040/public/lib/axios.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Document</title>
+
+
+  <%
+
+
+//const urlParams = new URLSearchParams(location.search);
+urlParams=req.query;
+
+
+ //ServerUrl+"
+const urlP= JSON.stringify(urlParams);
+
+hider ="hidden";
+
+if(urlP.includes('debug')){
+
+
+    hider ="";
+
+
+}
+
+if(urlP.includes('talk')){
+
+
+var talk = true;
+
+
+} else { var talk =false;}
+%>
+</head>
+
+<style>
+
+
+	HTML, body {
+	 background-color:black;
+	margin: 0px;
+	padding: 0px;
+	  border: 0px;
+	 font-size: larger;
+	  color:antiquewhite
+	}
+	
+	
+	.container{
+		position:absolute;
+ width: 100vw;
+ height:100vh;
+ margin: 0px;
+	padding: 0px;
+	  border: 0px;
+
+	}
+	
+
+	.player {
+	
+	z-index: 0;
+	width: 100%;
+	height:100%;
+
+	height:max-content;
+	
+	
+	}
+
+	.xdisplay
+	{
+	position:relative;
+	background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+    
+ 
+	
+
+	}
+	.debug
+	{
+		background-color: black;
+		position:relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+	
+	}
+
+	.hidden {
+		visibility: hidden;
+
+
+	
+
+
+	}
+
+	.och
+	{
+		background-color: black;
+		position:relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+	
+	
+}
+.overlay {
+	position:absolute;
+	margin-top: 100px;
+    margin-left: 100px;
+
+}
+.controlbox
+{
+
+	position:relative;
+    display: grid;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+
+    
+
+	}
+	
+		</style>
+
+		<script >
+
+
+
+
+
+  const called_page="<%=channel_id%>";	
+
+ 
+
+
+const out = ()=>{
+	$('#cpanel').css('visibility','hidden');
+
+
+};
+const hover = ()=>{
+$('#cpanel').css('visibility','visible');
+
+
+}
+;
+
+		var player;
+var talk = <%=talk%>;
+		
+	</script>
+<body>
+<div class="container"  id="dp" onmouseover="hover()" onmouseleave="out()"  onblur="out()"onfocus="hover()" >
+	
+		<div class="overlay" >
+		<div id="cpanel" class="controlbox" >
+		
+			
+ <a tabindex="1" onclick="playbox.toggleSound()" > <img src="/public/img/speaker.png"> <BR>-> Sound <- </a>
+ <a tabindex="2" onclick="playbox.toggleSound()"><i class="fas fa-volume"></i></a>
+
+<li><div id="cpinfo"></div></li>
+	
+		
+		</div>
+	
+	<div id="display" class="xdisplay <%=hider%> "   >
+		<div id="current-time">00:00</div>
+		<div id="duration">00:00</div>
+		<div id="info">00:00</div>
+		<div id="info2">info2</div>
+	</div>
+
+
+			<div id="debug" class="debug <%=hider%> "    >
+			<div id="d1">d1</div>
+			<div id="d2">d2</div>
+			<div id="d3">d3</div>
+			<div id="d4">d4</div>
+			</div>
+
+
+
+				<div id="debug" class="och <%=hider%> "   >
+			<div id="c1">c1</div>
+			<div id="c2">c2</div>
+			<div id="c3">c3</div>
+			<div id="c4">c4<%=hider%></div>
+				</div>
+</div>
+		
+			
+
+			
+			<div id="player" class="player " autoplay ></div>
+			<script>
+			  // 2. This code loads the IFrame Player API code asynchronously.
+			  var tag = document.createElement('script');
+			  tag.src = "https://www.youtube.com/iframe_api";
+			  var firstScriptTag = document.getElementsByTagName('script')[0];
+			  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+			   // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.   
+			  </script>
+	
+</div>
+</body>
+<script type="text/javascript" src="https://onetv.ng:8040/public/js/playbox.js"></script>
+<script type="text/javascript" src="https://onetv.ng:8040/public/js/capp.js"></script>
+</html>

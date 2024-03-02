@@ -1,0 +1,198 @@
+<footer>
+		<div class="footer-top-first">
+			<div class="container py-md-5 py-sm-4 py-3">
+				<!-- footer first section -->
+				<h2 class="footer-top-head-w3l font-weight-bold mb-2">iMediaPORT :</h2>
+				<p class="footer-main mb-4">
+					If We re Media.</p>
+				<!-- //footer first section -->
+				<!-- footer second section -->
+				<div class="row w3l-grids-footer border-top border-bottom py-sm-4 py-3">
+					<div class="col-md-4 offer-footer">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i class="fas fa-dolly"></i>
+							</div>
+							<div class="col-8 text-form-footer">
+								<h3>Free Shipping</h3>
+								<p>on orders over $100</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offer-footer my-md-0 my-4">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i class="fas fa-shipping-fast"></i>
+							</div>
+							<div class="col-8 text-form-footer">
+								<h3>Fast Delivery</h3>
+								<p>World Wide</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4 offer-footer">
+						<div class="row">
+							<div class="col-4 icon-fot">
+								<i class="far fa-thumbs-up"></i>
+							</div>
+							<div class="col-8 text-form-footer">
+								<h3>Big Choice</h3>
+								<p>of Products</p>
+							</div>
+						</div>
+					</div>
+				</div>.
+				<!-- //footer second section -->
+			</div>
+		</div>
+		<!-- footer third section -->
+		<div class="w3l-middlefooter-sec">
+			<div class="container py-md-5 py-sm-4 py-3">
+				<div class="row footer-info w3-agileits-info">
+					<!-- footer categories -->
+					<div class="col-md-3 col-sm-6 footer-grids">
+						<h3 class="text-white font-weight-bold mb-3">Categories</h3>
+						<ul>
+							<li class="mb-3">
+								<a href="product">Mobiles </a>
+							</li>
+							<li class="mb-3">
+								<a href="product">Computers</a>
+							</li>
+							<li class="mb-3">
+								<a href="product">TV, Audio</a>
+							</li>
+							<li class="mb-3">
+								<a href="product2">Smartphones</a>
+							</li>
+							<li class="mb-3">
+								<a href="product">Washing Machines</a>
+							</li>
+							<li>
+								<a href="product2">Refrigerators</a>
+							</li>
+						</ul>
+					</div>
+					<!-- //footer categories -->
+					<!-- quick links -->
+					<div class="col-md-3 col-sm-6 footer-grids mt-sm-0 mt-4">
+						<h3 class="text-white font-weight-bold mb-3">Quick Links</h3>
+						<ul>
+							<li class="mb-3">
+								<a href="about">About Us</a>
+							</li>
+							<li class="mb-3">
+								<a href="contact">Contact Us</a>
+							</li>
+							<li class="mb-3">
+								<a href="help">Help</a>
+							</li>
+							<li class="mb-3">
+								<a href="faqs">Faqs</a>
+							</li>
+							<li class="mb-3">
+								<a href="terms">Terms of use</a>
+							</li>
+							<li>
+								<a href="privacy">Privacy Policy</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 footer-grids mt-md-0 mt-4">
+						<h3 class="text-white font-weight-bold mb-3">Get in Touch</h3>
+						<ul>
+							<li class="mb-3">
+								<i class="fas fa-map-marker"></i> iMediaPORT International.</li>
+							<li class="mb-3">
+								<i class="fas fa-mobile"></i>USA +1 607 358 7981 </li>
+							<li class="mb-3">
+								<i class="fas fa-phone"></i>UK +44 20 3290 5920 </li>
+							<li class="mb-3">
+								<i class="fas fa-whatsapp"></i> +1 203 806 5927</li>
+								<li class="mb-3">
+								<i class="fas fa-envelope-open"></i>
+
+								<a  target="_blank"href="mailto:info@imediaport.com">info@imediaport.com</a></li>
+								<li class="mb-3">
+									<i class="fas fa-envelope-open"></i>
+									<a target="_blank" href="https://wa.me/+12038065927">Whatsapp Media Chat/Call</a>
+							</li>
+							<li>
+								<i class="fas fa-envelope-open"></i>
+								<a target="_blank" href="mailto:info@imediaport.com">info@imediaport.com</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-md-3 col-sm-6 footer-grids w3l-agileits mt-md-0 mt-4">
+						<!-- newsletter -->
+						<h3 class="text-white font-weight-bold mb-3">Newsletter</h3>
+						
+<script>   
+$(document).ready(function(){
+    $("#semore").click(function(){  
+    $("#sform").submit(function(event) {
+    const nametst = $("#name").val();
+    const commentst = $("#email").val();
+     event.preventDefault();  
+     event.stopImmediatePropagation();    
+    if ($.trim(commentst) != "") {
+            $.ajax({
+                  url : "/subscribe",
+                  method : "POST",
+                  data : { name : nametst , email : commentst } ,
+                  success : function(response){
+                     alert("Thank You for Subcribing Us..");
+                  }
+                });
+                return false; // Here Place Return
+            }
+            return false; // Here Place Return
+          });
+        });
+
+});
+
+</script>
+						<form id="sform" >
+							<div class="form-group">
+								<input type="text" class="form-control" placeholder="Name" id="name" name="name" required="">
+								<br>
+								<input type="text" class="form-control" id="email" placeholder="Email" name="email" required="">
+								<br>
+								<button class="btn btn-primary pull-right" id="semore"> Subscribe </button>
+							</div>
+						</form>
+
+						<!-- //newsletter -->
+						<!-- social icons -->
+						<div class="footer-grids  w3l-socialmk mt-3">
+							<h3 class="text-white font-weight-bold mb-3">Follow Us on</h3>
+							<div class="social">
+								<ul>
+									<li>
+										<a class="icon fb" href="#">
+											<i class="fab fa-facebook-f"></i>
+										</a>
+									</li>
+									<li>
+										<a class="icon tw" href="#">
+											<i class="fab fa-twitter"></i>
+										</a>
+									</li>
+									<li>
+										<a class="icon gp" href="#">
+											<i class="fab fa-google-plus-g"></i>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<!-- //social icons -->
+					</div>
+				</div>
+				<!-- //quick links -->
+			</div>
+		</div>
+		<!-- //footer third section -->
+
+	</footer>

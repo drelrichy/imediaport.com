@@ -1,0 +1,341 @@
+<audio id="ohnoalert">
+  <source src="https://imediaport.com:4646/alert/ohnoalert.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+<style>
+  * {
+  margin      : 0;
+  padding     : 0;
+  box-sizing  : border-box;
+  font-family : "Quicksand", sans-serif;
+  }
+html {
+  font-size : 62.5%;
+  }
+.container {
+  width            : 100%;
+  height           : 100vh;
+  background-color : #12121f;
+  color            : #eee;
+  display          : flex;
+  justify-content  : center;
+  align-items      : center;
+  }
+.calendar {
+  width            : 45rem;
+  height           : 52rem;
+  background-color : #222227;
+  box-shadow       : 0 0.5rem 3rem #00000066;
+  }
+.month {
+  width            : 100%;
+  height           : 12rem;
+  background-color : #167e56;
+  display          : flex;
+  justify-content  : space-between;
+  align-items      : center;
+  padding          : 0 2rem;
+  text-align       : center;
+  text-shadow      : 0 0.3rem 0.5rem #00000080;
+  }
+.month i {
+  font-size : 2.5rem;
+  cursor    : pointer;
+  }
+.month h1 {
+  font-size      : 3rem;
+  font-weight    : 400;
+  text-transform : uppercase;
+  letter-spacing : 0.2rem;
+  margin-bottom  : 1rem;
+  }
+.month p {
+  font-size : 1.6rem;
+  }
+.weekdays {
+  width       : 100%;
+  height      : 5rem;
+  padding     : 0 0.4rem;
+  display     : flex;
+  align-items : center;
+  }
+.weekdays div {
+  font-size       : 1.5rem;
+  font-weight     : 400;
+  letter-spacing  : 0.1rem;
+  width           : calc(44.2rem / 7);
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  text-shadow : 0 0.3rem 0.5rem #00000080;
+  }
+.days {
+  width     : 100%;
+  display   : flex;
+  flex-wrap : wrap;
+  padding   : 0.2rem;
+  }
+.days div {
+  font-size       : 1.4rem;
+  margin          : 0.3rem;
+  width           : calc(40.2rem / 7);
+  height          : 5rem;
+  display         : flex;
+  justify-content : center;
+  align-items     : center;
+  text-shadow     : 0 0.3rem 0.5rem #00000080;
+  transition      : background-color 0.2s;
+  }
+.days div:hover:not(.today) {
+  background-color : #262626;
+  border           : 0.2rem solid #777;
+  cursor           : pointer;
+  }
+.today {
+  background-color : #167e56;
+  }
+/* --- --- --- 
+.prev-date,
+.next-date {
+  opacity : 0.5;
+  } 
+--- --- --- */
+</style>
+
+<div id="timelist"  class="playlist">
+
+<div id="main_timelist"class="xplaylist" >
+  <div id="timelistx" class="xplaylist">:Timelist</div>
+  </div>
+
+
+<div id="main_playlist" class="xplaylist" >
+  <div id="playlist" class="xplaylist" >:Playlist</div>
+</div>
+
+ <div id="main_schedule"class="xplaylist" >
+   <div id="schedule" class="xplaylist" info="Schedules"> <%    include ../cpanel/main_schedule%> </div>
+  </div>
+
+  <div id='main_epg' class="xplaylist" > 
+    <div id='epg' class="xplaylist"  > :EP Guide</div>
+  </div>
+
+  <div id='main_programs' class="xplaylist" > 
+    <div id='programs' class="xplaylist">:Programs</div>
+  </div>
+
+  <div id='main_week' class="xplaylist" hidden > 
+    <div id='week' class="xplaylist">
+
+<input type="hidden" name="dates" class="dates" value="<?= $dates ?>" >
+<div class="container">
+  <div class="calendar">
+    <div class="month">
+      <i class="fas fa-angle-left prev"></i>
+      <div class="date">
+        <h1></h1>
+        <p></p>
+      </div>
+      <i class="fas fa-angle-right next"></i>
+    </div>
+    <div class="weekdays">
+      <div>Sun</div>
+      <div>Mon</div>
+      <div>Tue</div>
+      <div>Wed</div>
+      <div>Thu</div>
+      <div>Fri</div>
+      <div>Sat</div>
+    </div>
+    <div class="days"></div>
+  </div>
+</div>
+
+</div>
+  </div>
+
+
+
+
+  <div id='main_libry' class="xplaylist" > 
+    <div id='libry' class="xplaylist"  > :Library</div>
+  </div>
+
+<div id='main_calendar' class="xplaylist" > 
+<div id='calendar' class="xplaylist" > :Calender</div>
+</div>
+
+  <div id='main_welcome' class="xplaylist" > 
+    <div id='welcome' class="xplaylist" info=':Welcome'> <%    include ../cpanel/main_welcome%></div>
+  </div>
+
+  </div>
+
+ <script>
+const msgboxShowMessage = document.querySelector("#msgboxShowMessage");
+    const msgboxHiddenClose = document.querySelector("#msgboxHiddenClose");
+    
+    // Creation of Message Box class, and the sample usage
+    
+    const msgbox = new MessageBox({
+      closeTime: 5000,
+      hideCloseButton: false
+    });
+    const msgboxPersistent = new MessageBox({
+      closeTime: 0
+    });
+    const msgboxNoClose = new MessageBox({
+      closeTime: 2000,
+      hideCloseButton: true
+    }); 
+
+
+
+
+var xa = document.getElementById("ohnoalert"); 
+
+function playAlert() { 
+  xa.play(); 
+} 
+
+function pauseAlert() { 
+  xa.pause(); 
+} 
+    // Show the message at the beginning
+    /*****
+    msgboxPersistent.show(
+      "Hello! I am a message box! I will appear on the page load period. I also have a callback. You may check on 'Console' to see.",
+      () => {
+        console.log(
+          "I am the callback! Of course, you may add various javaScript codes to make the callback function colourful."
+        );
+      },
+      "Has callback"
+    );
+
+    */
+
+    const date = new Date();
+
+function renderCalendar(lastdayofweek)
+  {
+
+
+
+  var lastofweek = lastdayofweek;
+  date.setDate(1);
+
+  const monthDays     = document.querySelector(".days");
+  var   lastDay       = new Date( date.getFullYear(), date.getMonth() + 1, 0).getDate();
+  const prevLastDay   = new Date( date.getFullYear(), date.getMonth(), 0 ).getDate();
+  const firstDayIndex = date.getDay();
+  const lastDayIndex  = new Date( date.getFullYear(), date.getMonth() + 1, 0 ).getDay();
+  const nextDays      = 7 - lastDayIndex - 1;
+
+  const months = 
+    [ 'January', 'February', 'March', 'April', 'May', 'June'
+    , 'July', 'August', 'September', 'October', 'November', 'December'
+    ];
+
+  document.querySelector(".date h1").innerHTML = months[date.getMonth()];
+  document.querySelector(".date p").innerHTML  = new Date().toDateString();
+
+  let days  = '' 
+    , count = 0
+    ;
+  if (lastofweek+7 >= lastDay)
+    {
+    for (let x = firstDayIndex; x > 0; x--)
+      {
+      days      += `<div class="prev-date">${prevLastDay - x + 1}</div>`;
+      count      = count+1;
+      lastofweek = prevLastDay - x + 1;
+      lastDay    = lastofweek;
+      }
+    }
+
+  const nxtDay = 7 - count - 1;
+
+  if (lastofweek == undefined)
+    {
+    for (let i = 1; i <= nxtDay+1; i++)
+      {
+      if (i === new Date().getDate() && date.getMonth() === new Date().getMonth()) 
+        {
+        days += `<div class="today">${i}</div>`;
+        } 
+      else 
+        {
+        days += `<div>${i}</div>`;
+        lastDayOfWeek = i;
+        }
+      count = count+1;
+      monthDays.innerHTML = days;
+      }
+    }
+  else
+    {
+    if (lastofweek+1 > lastDay)
+      {
+      lastofweek = 0;
+      }   
+    var forCount = 0;
+
+    for (let i = lastofweek+1; i <= lastofweek+7; i++)
+      {
+      if(lastDay >= i && forCount <= nxtDay)
+        {
+        if (i === new Date().getDate() && date.getMonth() === new Date().getMonth())
+          {
+          days += `<div class="today">${i}</div>`;
+          } 
+        else 
+          {
+          days += `<div>${i}</div>`;
+          lastDayOfWeek = i;
+          }
+        count    = count+1;
+        forCount = forCount + 1;
+        monthDays.innerHTML = days;
+        }
+      } 
+    }
+
+  if (count < 7)
+    {
+    for (let j = 1; j <= nextDays; j++) 
+      {
+      days += `<div class="next-date">${j}</div>`;
+      monthDays.innerHTML = days;
+      }
+    }
+  }
+
+
+document.querySelector(".prev").addEventListener("click", () => 
+  {
+  date.setMonth(date.getMonth());
+  renderCalendar();
+  });
+
+const lastDay = new Date( date.getFullYear(), date.getMonth() + 1, 0 ).getDate();
+
+document.querySelector(".next").addEventListener("click", () =>
+  {
+  if(lastDayOfWeek+7 > lastDay)
+    {
+    date.setMonth(date.getMonth()+1);
+    renderCalendar(lastDayOfWeek);
+    }
+  else
+    {
+    date.setMonth(date.getMonth());
+    renderCalendar(lastDayOfWeek);
+    }
+  });
+
+//renderCalendar();
+    </script>
+
+

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="../server/config/config.js"> </script>
+  <script src="../public/js/jquery.min.js"></script>
+  <script src="../public/lib/axios.min.js"></script>
+
+  <title>Document</title>
+</head>
+
+<style>
+
+
+	HTML, body {
+	 background-color:black;
+	margin: 0px;
+	padding: 0px;
+	  border: 0px;
+	  font-size: larger;
+	  color:antiquewhite
+	}
+	
+	
+	.container{
+ width: 100vw;
+ height: 100vh;
+
+	}
+	#player div {
+	
+	z-index: -2;
+	
+	
+	}
+	
+	.player {
+	
+	z-index: -2;
+	width: 99%;
+	height: 99%;
+	height: 100%;
+	
+	
+	}
+
+	.xdisplay
+	{
+	position:absolute;
+	background-color: black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+    width: 800px;
+    margin-top: 70px;
+    margin-left: 200px;
+	
+
+	}
+	.debug
+	{
+		background-color: black;
+	position:absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+	width: 800px;
+    margin-top: -250px;
+    margin-left: 200px;
+	
+
+
+	}
+
+	.och
+	{
+		background-color: black;
+	position:absolute;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+	z-index: 4;
+	color: aliceblue;
+	font-size: larger;
+	width: 800px;
+    margin-top: -150px;
+    margin-left: 200px;
+	
+
+
+	}
+	
+		</style>
+
+		<script >
+		var player;
+		
+	</script>
+<body>
+<div class="container">
+	
+	
+	<div id="display" class="xdisplay">
+		<div id="current-time">00:00</div>
+		<div id="duration">00:00</div>
+		<div id="info">00:00</div>
+		<div id="info2">info2</div>
+	</div>
+
+<div id="player" class="player "></div>
+<div id="debug" class="debug">
+	<div id="d1">d1</div>
+	<div id="d2">d2</div>
+	<div id="d3">d3</div>
+	<div id="d4">d4</div>
+</div>
+
+
+
+<div id="debug" class="och">
+	<div id="c1">c1</div>
+	<div id="c2">c2</div>
+	<div id="c3">c3</div>
+	<div id="c4">c4</div>
+</div>
+		
+			</div>
+
+			
+
+			<script>
+			  // 2. This code loads the IFrame Player API code asynchronously.
+			  var tag = document.createElement('script');
+		
+			  tag.src = "https://www.youtube.com/iframe_api";
+			  var firstScriptTag = document.getElementsByTagName('script')[0];
+			  firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+			  
+
+
+			   // 3. This function creates an <iframe> (and YouTube player)
+      //    after the API code downloads.
+      
+			  </script>
+	</div>
+</div>
+</body>
+<script src="../public/js/cplay.js"></script>
+
+</html>
